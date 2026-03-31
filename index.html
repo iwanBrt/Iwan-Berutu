@@ -1,482 +1,1061 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iwan Agi Berutu | Software Engineer & Mobile Developer</title>
-    <meta name="description" content="Portofolio Resmi Iwan Agi Berutu. Software Engineer dan Mobile Developer spesialis Laravel, React Native, dan IoT. Berbasis di Sumatera Utara, Indonesia.">
-    <meta name="keywords" content="Iwan Agi Berutu, IwanBrt, Software Engineer Medan, Web Developer, React Native Developer, Laravel Developer, Portofolio Programmer, Full Stack Developer">
-    <meta name="author" content="Iwan Agi Berutu">
-    <meta name="robots" content="index, follow">
-    <meta name="google-site-verification" content="Zc-b_FLO7UqgdWCUt5fIHHw1o5huC0B5xZbbyEMdY5k" />
-    
-    <!-- Favicon (Circular) -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    
-    <!-- Open Graph Tags (Social Media Sharing) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://iwanberutu.blog/">
-    <meta property="og:title" content="Iwan Agi Berutu - Software Engineer & Mobile Dev">
-    <meta property="og:description" content="Lihat proyek dan pengalaman Iwan Agi Berutu dalam membangun aplikasi web dan mobile modern.">
-    <meta property="og:image" content="https://iwanberutu.blog/assets/og-image.jpg">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Iwan Agi Berutu - Software Engineer & Mobile Dev">
-    <meta name="twitter:description" content="Lihat proyek dan pengalaman Iwan Agi Berutu dalam membangun aplikasi web dan mobile modern.">
-    <meta name="twitter:image" content="https://iwanberutu.blog/assets/og-image.jpg">
-    
-    <!-- Fonts: Inter (Sans) & Fira Code (Mono) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        :root {
-            /* Warna khas Brittany Style (Navy & Teal) */
-            --bg-body: #0f172a;       /* Slate 900 */
-            --text-heading: #e2e8f0;  /* Slate 200 */
-            --text-body: #94a3b8;     /* Slate 400 */
-            --accent: #5eead4;        /* Teal 300 */
-            --hover-bg: rgba(30, 41, 59, 0.5); /* Slate 800 transparent */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iwan Agi Berutu | Software Engineer & Mobile Developer</title>
+  <meta name="description"
+    content="Portofolio Resmi Iwan Agi Berutu. Software Engineer dan Mobile Developer spesialis Laravel, React Native, dan IoT. Berbasis di Sumatera Utara, Indonesia.">
+  <meta name="keywords"
+    content="Iwan Agi Berutu, IwanBrt, Software Engineer Medan, Web Developer, React Native Developer, Laravel Developer, Portofolio Programmer, Full Stack Developer">
+  <meta name="author" content="Iwan Agi Berutu">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="Zc-b_FLO7UqgdWCUt5fIHHw1o5huC0B5xZbbyEMdY5k" />
 
-        html {
-            scroll-padding-top: 80px; /* Jarak aman saat klik link navigasi */
-        }
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-body);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            selection-background-color: var(--accent);
-            selection-color: var(--bg-body);
-            overflow-x: hidden; /* Mencegah scroll horizontal di HP */
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iwanberutu.blog/">
+  <meta property="og:title" content="Iwan Agi Berutu - Software Engineer & Mobile Dev">
+  <meta property="og:description"
+    content="Lihat proyek dan pengalaman Iwan Agi Berutu dalam membangun aplikasi web dan mobile modern.">
+  <meta property="og:image" content="https://iwanberutu.blog/assets/og-image.jpg">
 
-        h1, h2, h3, h4 {
-            color: var(--text-heading);
-        }
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Iwan Agi Berutu - Software Engineer & Mobile Dev">
+  <meta name="twitter:description"
+    content="Lihat proyek dan pengalaman Iwan Agi Berutu dalam membangun aplikasi web dan mobile modern.">
+  <meta name="twitter:image" content="https://iwanberutu.blog/assets/og-image.jpg">
 
-        .font-mono { font-family: 'Fira Code', monospace; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
 
-        /* --- Spotlight Effect (Desktop Only) --- */
-        @media (hover: hover) {
-            .spotlight {
-                position: fixed;
-                top: 0; left: 0; width: 100%; height: 100%;
-                pointer-events: none;
-                z-index: 9999;
-                background: radial-gradient(600px at var(--x) var(--y), rgba(29, 78, 216, 0.15), transparent 80%);
-            }
-        }
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface-2: #16161f;
+      --border: rgba(255, 255, 255, 0.07);
+      --text-primary: #f0eff5;
+      --text-secondary: #7c7a91;
+      --text-muted: #3d3c52;
+      --accent: #a78bfa;
+      --accent-dim: rgba(167, 139, 250, 0.12);
+      --accent-glow: rgba(167, 139, 250, 0.4);
+      --green: #34d399;
+      --green-dim: rgba(52, 211, 153, 0.1);
+    }
 
-        /* --- Utilities --- */
-        .group:hover .group-hover\:text-accent { color: var(--accent); }
-        
-        .nav-link.active {
-            color: var(--text-heading);
-            font-weight: 700;
-        }
-        .nav-link.active .nav-indicator {
-            width: 3rem;
-            background-color: var(--text-heading);
-        }
-        
-        /* Tool Card Animation */
-        .tool-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .tool-card:hover {
-            background-color: rgba(94, 234, 212, 0.1);
-            transform: translateY(-2px);
-            border-color: var(--accent);
-        }
+    html {
+      scroll-padding-top: 100px;
+    }
 
-        /* Project Image Effects */
-        .project-image {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .project-image:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 20px 40px rgba(94, 234, 212, 0.3), 0 0 20px rgba(94, 234, 212, 0.2);
-            border-color: var(--accent) !important;
-        }
-    </style>
+    body {
+      background: var(--bg);
+      color: var(--text-secondary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Noise grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
+
+    /* ── Ambient glow ── */
+    .ambient {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    .ambient-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.3), transparent 70%);
+      top: -100px;
+      left: -100px;
+    }
+
+    .ambient-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.15), transparent 70%);
+      bottom: 200px;
+      right: -100px;
+    }
+
+    /* ── Spotlight ── */
+    @media (hover: hover) {
+      .spotlight {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background: radial-gradient(500px at var(--mx, 50%) var(--my, 50%), rgba(167, 139, 250, 0.06), transparent 80%);
+        transition: background 0.1s;
+      }
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--text-muted);
+      border-radius: 4px;
+    }
+
+    /* ── Layout ── */
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    @media (min-width: 1024px) {
+      .layout {
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 0 80px;
+        min-height: 100vh;
+      }
+
+      .col-left {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 80px 0;
+      }
+
+      .col-right {
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .col-left {
+        padding: 56px 0 40px;
+      }
+
+      .col-right {
+        padding-bottom: 64px;
+      }
+    }
+
+    /* ── Typography ── */
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .role-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .bio {
+      margin-top: 24px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 380px;
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      margin-top: 56px;
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .nav {
+        display: block;
+      }
+    }
+
+    .nav ul {
+      list-style: none;
+    }
+
+    .nav li+li {
+      margin-top: 4px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      padding: 8px 0;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-line {
+      height: 1px;
+      width: 24px;
+      background: currentColor;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .nav-link:hover .nav-line,
+    .nav-link.active .nav-line {
+      width: 48px;
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+    }
+
+    .nav-link.active .nav-line {
+      background: var(--accent);
+    }
+
+    /* ── Social Links ── */
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+      background: var(--surface);
+    }
+
+    .socials a:hover {
+      color: var(--accent);
+      border-color: rgba(167, 139, 250, 0.3);
+      background: var(--accent-dim);
+      transform: translateY(-2px);
+    }
+
+    /* ── Section Headers (mobile) ── */
+    .section-label {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 0 -32px 32px;
+      padding: 16px 32px;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    @media (min-width: 1024px) {
+      .section-label {
+        display: none;
+      }
+    }
+
+    /* ── Section spacing ── */
+    section {
+      margin-bottom: 100px;
+    }
+
+    section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border) 30%, var(--border) 70%, transparent);
+      margin-bottom: 40px;
+    }
+
+    /* ── About ── */
+    .about-text p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      font-size: 14.5px;
+      line-height: 1.85;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Tech Stack ── */
+    .stack-title {
+      margin: 40px 0 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .stack-item:hover {
+      border-color: rgba(167, 139, 250, 0.3);
+      background: var(--accent-dim);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Experience ── */
+    .exp-list {
+      list-style: none;
+    }
+
+    .exp-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0 24px;
+      padding: 28px 24px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      margin-bottom: 4px;
+    }
+
+    .exp-item:hover {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    .exp-year {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-muted);
+      padding-top: 3px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exp-role:hover {
+      color: var(--accent);
+    }
+
+    .exp-role svg {
+      width: 13px;
+      height: 13px;
+      opacity: 0;
+      transform: translate(-2px, 2px);
+      transition: all 0.2s;
+    }
+
+    .exp-item:hover .exp-role svg {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .exp-desc {
+      margin-top: 8px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+      list-style: none;
+    }
+
+    .tag {
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: var(--green-dim);
+      border: 1px solid rgba(52, 211, 153, 0.15);
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--green);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── CV Link ── */
+    .cv-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 32px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .cv-link:hover {
+      border-color: rgba(167, 139, 250, 0.4);
+      background: var(--accent-dim);
+      color: var(--accent);
+      gap: 14px;
+    }
+
+    .cv-link svg {
+      transition: transform 0.25s;
+    }
+
+    .cv-link:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ── Projects ── */
+    .project-list {
+      list-style: none;
+    }
+
+    .project-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 20px;
+      align-items: start;
+      padding: 28px 24px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      margin-bottom: 4px;
+    }
+
+    .project-item:hover {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    .project-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .project-name:hover {
+      color: var(--accent);
+    }
+
+    .project-name svg {
+      width: 13px;
+      height: 13px;
+      opacity: 0;
+      transform: translate(-2px, 2px);
+      transition: all 0.2s;
+    }
+
+    .project-item:hover .project-name svg {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .project-desc {
+      margin-top: 8px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .project-img-wrap {
+      width: 120px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      aspect-ratio: 3/4;
+      background: var(--surface-2);
+    }
+
+    .project-item:hover .project-img-wrap {
+      border-color: rgba(167, 139, 250, 0.35);
+      box-shadow: 0 8px 32px rgba(167, 139, 250, 0.15);
+    }
+
+    .project-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-item:hover .project-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    @media (max-width: 560px) {
+      .project-item {
+        grid-template-columns: 1fr;
+      }
+
+      .project-img-wrap {
+        width: 80px;
+        aspect-ratio: 3/4;
+      }
+    }
+
+    /* ── Number labels ── */
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 32px 0 0;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── Entry animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .col-left>* {
+      animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .col-left>*:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .col-left>*:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .col-left>*:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+
+    /* ── Mobile nav padding ── */
+    @media (max-width: 1023px) {
+      .section-heading {
+        display: none;
+      }
+
+      .section-number {
+        display: none;
+      }
+    }
+
+    /* Ensure section label only shows mobile */
+    @media (min-width: 1024px) {
+      .section-label {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body class="antialiased">
 
-    <!-- The Spotlight Element (Hidden on Touch Devices automatically via CSS) -->
-    <div class="spotlight"></div>
+<body>
 
-    <div class="mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
-        <div class="lg:flex lg:justify-between lg:gap-4">
-            
-            <!-- LEFT COLUMN (Header / Info) -->
-            <!-- Di Mobile: Scroll biasa. Di Desktop: Sticky/Diam di kiri -->
-            <header class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
-                <div>
-                    <!-- Nama & Judul (Responsif Font Size) -->
-                    <h1 class="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-                        <a href="/">Iwan AgiBerutu</a>
-                    </h1>
-                    <h2 class="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-                        Software Engineer<br>
-                        <span class="text-teal-300">Web & Mobile Developer</span>
-                    </h2>
-                    <p class="mt-4 max-w-xs leading-normal text-slate-400">
-                        Saya merancang dan membangun solusi perangkat lunak lintas platform yang skalabel, efisien, dan berpusat pada pengguna.
-                    </p>
+  <!-- Ambient glows -->
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="spotlight" id="spotlight"></div>
 
-                    <!-- Navigation (Hidden on Mobile, Visible on Desktop) -->
-                    <nav class="nav hidden lg:block" aria-label="In-page jump links">
-                        <ul class="mt-16 w-max">
-                            <li>
-                                <a class="nav-link group flex items-center py-3" href="#about">
-                                    <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none"></span>
-                                    <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">Tentang Saya</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link group flex items-center py-3" href="#experience">
-                                    <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none"></span>
-                                    <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">Pengalaman</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link group flex items-center py-3" href="#projects">
-                                    <span class="nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none"></span>
-                                    <span class="nav-text text-xs font-bold uppercase tracking-widest text-slate-500 group-hover:text-slate-200">Proyek</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+  <div class="wrapper">
+    <div class="layout">
 
-                <!-- Social Links -->
-                <ul class="ml-1 mt-8 flex items-center gap-6 lg:mt-0" aria-label="Social media">
-                    <li class="h-6 w-6">
-                        <a href="https://github.com/iwanBrt/iwanBrt-" target="_blank" class="block hover:text-slate-200 transition-colors" title="GitHub">
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-                        </a>
-                    </li>
-                    <li class="h-6 w-6">
-                        <a href="https://www.linkedin.com/in/iwan-berutu" target="_blank" class="block hover:text-slate-200 transition-colors" title="LinkedIn">
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" /></svg>
-                        </a>
-                    </li>
-                    <li class="h-6 w-6">
-                        <a href="https://www.instagram.com/wann_Brt" class="block hover:text-slate-200 transition-colors" title="Instagram">
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.53c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
-                        </a>
-                    </li>
-                </ul>
-            </header>
+      <!-- ═══ LEFT COLUMN ═══ -->
+      <header class="col-left">
+        <div>
+          <p class="subtitle animate">Software Engineer</p>
+          <h1 class="animate" style="animation-delay:.05s">Iwan Agi<br>Berutu</h1>
+          <span class="role-badge animate" style="animation-delay:.1s">Available for projects</span>
+          <p class="bio animate" style="animation-delay:.15s">
+            Merancang dan membangun solusi perangkat lunak lintas platform yang skalabel, efisien, dan berpusat pada
+            pengguna.
+          </p>
 
-            <!-- RIGHT COLUMN (Scrollable Content) -->
-            <main class="pt-24 lg:w-1/2 lg:py-24">
-                
-                <!-- About Section -->
-                <section id="about" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="About me">
-                    <!-- Sticky Header for Mobile -->
-                    <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Tentang Saya</h2>
-                    </div>
-                    <div class="text-slate-400 leading-relaxed">
-                        <p class="mb-4">
-                            Perjalanan saya dalam rekayasa perangkat lunak dimulai dari rasa ingin tahu tentang bagaimana aplikasi skala besar bekerja. Kini, saya memiliki keahlian dalam Full Stack Web Development dan Mobile Application Development, menggabungkan logika backend yang kuat dengan antarmuka frontend yang intuitif.
-                        </p>
-                        <p class="mb-4">
-                            Saat ini, saya baru saja menyelesaikan proyek sistem informasi yang kompleks untuk instansi pemerintah, menangani manajemen data dalam skala besar. Saya menikmati tantangan dalam mengoptimalkan performa aplikasi dan memastikan keamanan data pengguna.
-                        </p>
-                        <p>
-                            Di luar koding, saya selalu mengeksplorasi teknologi baru seperti AI dan IoT untuk melihat bagaimana mereka bisa diintegrasikan ke dalam solusi praktis sehari-hari.
-                        </p>
-
-                        <!-- Tech Stack / Tools (Added Section) -->
-                        <div class="mt-8">
-                            <h3 class="mb-4 text-xs font-bold uppercase tracking-widest text-slate-200">Tools & Technologies</h3>
-                            <ul class="flex flex-wrap gap-2">
-                                <!-- JavaScript -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M5.76 13.56c2.69 0 4.87-2.18 4.87-4.87S8.45 3.82 5.76 3.82c-2.69 0-4.87 2.18-4.87 4.87s2.18 4.87 4.87 4.87zm0-7.74c1.58 0 2.87 1.29 2.87 2.87s-1.29 2.87-2.87 2.87-2.87-1.29-2.87-2.87 1.29-2.87 2.87-2.87zm12.48 7.74c2.69 0 4.87-2.18 4.87-4.87S20.93 3.82 18.24 3.82c-2.69 0-4.87 2.18-4.87 4.87s2.18 4.87 4.87 4.87zm0-7.74c1.58 0 2.87 1.29 2.87 2.87s-1.29 2.87-2.87 2.87-2.87-1.29-2.87-2.87 1.29-2.87 2.87-2.87zM1.67 20.18h8.18v-2H1.67v2zm12.48 0h8.18v-2h-8.18v2z"/></svg>
-                                    JavaScript
-                                </li>
-                                <!-- PHP (Laravel) -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h12V4H6zm2 4h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
-                                    Laravel
-                                </li>
-                                <!-- React -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                                    React.js
-                                </li>
-                                <!-- Tailwind -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.001 2c-5.522 0-10 4.477-10 10s4.478 10 10 10c5.523 0 10-4.477 10-10s-4.477-10-10-10zm3 13h-6v-2h6v2zm0-4h-6V9h6v2z"/></svg>
-                                    Tailwind CSS
-                                </li>
-                                <!-- React Native -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                                    React Native
-                                </li>
-                                <!-- Git -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                                    Git
-                                </li>
-                                <!-- MySQL -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                                    MySQL
-                                </li>
-                                <!-- VS Code -->
-                                <li class="tool-card flex items-center gap-2 rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1.5 text-xs font-medium text-teal-300 hover:text-teal-200">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-                                    VS Code
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Experience Section -->
-                <section id="experience" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Work experience">
-                    <!-- Sticky Header for Mobile -->
-                    <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Pengalaman</h2>
-                    </div>
-                    
-                    <ol class="group/list">
-                        <!-- Job 1 -->
-                        <li class="mb-12">
-                            <div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                                <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                                <header class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="2023 to Present">2023 — Sekarang</header>
-                                <div class="z-10 sm:col-span-6">
-                                    <h3 class="font-medium leading-snug text-slate-200">
-                                        <div>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="#" target="_blank" rel="noreferrer" aria-label="Freelance Software Engineer">
-                                                <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span>Freelance Software Engineer</span>
-                                            </a>
-                                        </div>
-                                    </h3>
-                                    <p class="mt-2 text-sm leading-normal text-slate-400">
-                                        Membangun solusi digital end-to-end untuk klien, mulai dari website profil perusahaan hingga sistem manajemen inventaris. Mengembangkan aplikasi mobile cross-platform untuk kebutuhan UMKM.
-                                    </p>
-                                    <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Laravel</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">React Native</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">PostgreSQL</div></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Job 2 -->
-                        <li class="mb-12">
-                            <div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                                <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                                <header class="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2" aria-label="2020 to 2024">2020 — 2024</header>
-                                <div class="z-10 sm:col-span-6">
-                                    <h3 class="font-medium leading-snug text-slate-200">
-                                        <div>
-                                            <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="#" target="_blank" rel="noreferrer" aria-label="Mahasiswa Ilmu Komputer">
-                                                <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                                <span>Mahasiswa Ilmu Komputer · <span class="inline-block">Universitas</span></span>
-                                            </a>
-                                        </div>
-                                    </h3>
-                                    <p class="mt-2 text-sm leading-normal text-slate-400">
-                                        Fokus pada Rekayasa Perangkat Lunak dan Pengembangan Mobile. Memimpin tim dalam proyek capstone pengembangan sistem IoT.
-                                    </p>
-                                    <ul class="mt-2 flex flex-wrap" aria-label="Skills">
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">System Analysis</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Mobile Dev</div></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ol>
-                    
-                    <div class="mt-12">
-                        <a class="inline-flex items-center font-medium leading-tight text-slate-200 font-semibold text-slate-200 group" aria-label="Lihat CV Lengkap" href="#">
-                            <span class="border-b border-transparent pb-px transition group-hover:border-teal-300 motion-reduce:transition-none">Lihat CV Lengkap</span>
-                            <span class="whitespace-nowrap">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-1 inline-block h-4 w-4 shrink-0 -translate-y-px transition-transform group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"></path></svg>
-                            </span>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- Projects Section -->
-                <section id="projects" class="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24" aria-label="Selected projects">
-                    <!-- Sticky Header for Mobile -->
-                    <div class="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-slate-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">Proyek</h2>
-                    </div>
-                    
-                    <ul class="group/list">
-                        
-                        <!-- Project 1: Si-Stasuin-Klimatologi -->
-                        <li class="mb-12">
-                            <div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                                <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                                <div class="z-10 sm:order-2 sm:col-span-6">
-                                    <h3>
-                                        <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://github.com/iwanBrt/Si-Stasuin-Klimatologi-Kelas-1-Sumatera-Utara" target="_blank" rel="noreferrer" aria-label="Si-Stasuin-Klimatologi-Kelas-1-Sumatera-Utara">
-                                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                            <span>Si-Stasuin-Klimatologi-Kelas-1-Sumatera-Utara <span class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg></span></span>
-                                        </a>
-                                    </h3>
-                                    <p class="mt-2 text-sm leading-normal text-slate-400">
-                                        Sistem informasi manajemen data klimatologi terintegrasi untuk UPT BMKG. Fitur meliputi manajemen data magang, visualisasi cuaca, dan pelaporan otomatis.
-                                    </p>
-                                    <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Laravel</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">React</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Inertia.js</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">MySQL</div></li>
-                                    </ul>
-                                </div>
-                                <img alt="Si-Stasuin-Klimatologi Project" loading="lazy" width="160" height="220" decoding="async" data-nimg="1" class="project-image rounded border-2 border-slate-200/10 sm:order-1 sm:col-span-2 sm:translate-y-1" style="color:transparent; object-fit: cover;" src="./klimatologi.png">
-                            </div>
-                        </li>
-
-                        <!-- Project 2: AplikasiGizi (SADEWA / NusaFit.AI) -->
-                        <li class="mb-12">
-                            <div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                                <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                                <div class="z-10 sm:order-2 sm:col-span-6">
-                                    <h3>
-                                        <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://github.com/iwanBrt/AplikasiGizi" target="_blank" rel="noreferrer" aria-label="AplikasiGizi (SADEWA / NusaFit.AI)">
-                                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                            <span>AplikasiGizi (SADEWA / NusaFit.AI) <span class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg></span></span>
-                                        </a>
-                                    </h3>
-                                    <p class="mt-2 text-sm leading-normal text-slate-400">
-                                        Aplikasi mobile kesehatan berbasis AI untuk pemantauan gizi dan rekomendasi diet. Dikembangkan sebagai proyek kompetisi inovasi teknologi.
-                                    </p>
-                                    <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">React Native</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">AI / Python</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">TensorFlow Lite</div></li>
-                                    </ul>
-                                </div>
-                                <img alt="AplikasiGizi Project" loading="lazy" width="160" height="220" decoding="async" data-nimg="1" class="project-image rounded border-2 border-slate-200/10 sm:order-1 sm:col-span-2 sm:translate-y-1" style="color:transparent; object-fit: cover;" src="./aplikasiGizi.jpeg">
-                            </div>
-                        </li>
-
-                        <!-- Project 3: Web Sekolah BelajarCeria -->
-                        <li class="mb-12">
-                            <div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                                <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                                <div class="z-10 sm:order-2 sm:col-span-6">
-                                    <h3>
-                                        <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://github.com/iwanBrt/web-sekolah-belajarceria" target="_blank" rel="noreferrer" aria-label="Web Sekolah BelajarCeria">
-                                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                            <span>Web Sekolah BelajarCeria <span class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg></span></span>
-                                        </a>
-                                    </h3>
-                                    <p class="mt-2 text-sm leading-normal text-slate-400">
-                                        Platform website sekolah modern untuk mengelola informasi akademik, profil sekolah, dan berita kegiatan siswa. Dirancang dengan antarmuka yang ramah pengguna untuk memudahkan akses informasi bagi siswa dan orang tua.
-                                    </p>
-                                    <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">PHP</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">MySQL</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Bootstrap</div></li>
-                                    </ul>
-                                </div>
-                                <img alt="Web Sekolah Project" loading="lazy" width="160" height="220" decoding="async" data-nimg="1" class="project-image rounded border-2 border-slate-200/10 sm:order-1 sm:col-span-2 sm:translate-y-1" style="color:transparent; object-fit: cover;" src="./belajarceria.png">
-                            </div>
-                        </li>
-
-                        <!-- Project 4: Aplikasi MyNotion -->
-                        <li class="mb-12">
-                            <div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                                <div class="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-                                <div class="z-10 sm:order-2 sm:col-span-6">
-                                    <h3>
-                                        <a class="inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 group/link text-base" href="https://github.com/iwanBrt/MobileApp" target="_blank" rel="noreferrer" aria-label="Aplikasi MyNotion">
-                                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
-                                            <span>Aplikasi MyNotion <span class="inline-block"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg></span></span>
-                                        </a>
-                                    </h3>
-                                    <p class="mt-2 text-sm leading-normal text-slate-400">
-                                        Aplikasi produktivitas mobile yang terinspirasi oleh Notion. Memungkinkan pengguna membuat catatan, daftar tugas, dan manajemen proyek sederhana dengan antarmuka yang bersih dan sinkronisasi data lokal.
-                                    </p>
-                                    <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">React Native</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">Expo</div></li>
-                                        <li class="mr-1.5 mt-2"><div class="flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300">AsyncStorage</div></li>
-                                    </ul>
-                                </div>
-                                <img alt="MyNotion Project" loading="lazy" width="160" height="220" decoding="async" data-nimg="1" class="project-image rounded border-2 border-slate-200/10 sm:order-1 sm:col-span-2 sm:translate-y-1" style="color:transparent; object-fit: cover;" src="./MyNotion.jpeg">
-                            </div>
-                        </li>
-
-                    </ul>
-                </section>
-
-                <footer class="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
-                    <p>
-                        © 2024 Iwan Agi Berutu. Semua hak dilindungi undang-undang.
-                    </p>
-                </footer>
-
-            </main>
+          <nav class="nav animate" style="animation-delay:.2s" aria-label="In-page navigation">
+            <ul>
+              <li><a class="nav-link" href="#about"><span class="nav-line"></span>Tentang Saya</a></li>
+              <li><a class="nav-link" href="#experience"><span class="nav-line"></span>Pengalaman</a></li>
+              <li><a class="nav-link" href="#projects"><span class="nav-line"></span>Proyek</a></li>
+            </ul>
+          </nav>
         </div>
+
+        <!-- Social Icons -->
+        <ul class="socials animate" aria-label="Social media" style="animation-delay:.25s">
+          <!-- GitHub -->
+          <li>
+            <a href="https://github.com/iwanBrt/iwanBrt-" target="_blank" rel="noreferrer" title="GitHub">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </li>
+          <!-- LinkedIn -->
+          <li>
+            <a href="https://www.linkedin.com/in/iwan-berutu" target="_blank" rel="noreferrer" title="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </li>
+          <!-- Instagram -->
+          <li>
+            <a href="https://www.instagram.com/wann_Brt" target="_blank" rel="noreferrer" title="Instagram">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.53c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- ═══ RIGHT COLUMN ═══ -->
+      <main class="col-right">
+
+        <!-- ── About ── -->
+        <section id="about" aria-label="Tentang saya">
+          <div class="section-label">Tentang Saya</div>
+          <p class="section-number">01</p>
+          <h2 class="section-heading">Tentang Saya</h2>
+
+          <div class="about-text">
+            <p>Perjalanan saya dalam rekayasa perangkat lunak dimulai dari rasa ingin tahu tentang bagaimana aplikasi
+              skala besar bekerja. Kini, saya memiliki keahlian dalam Full Stack Web Development dan Mobile Application
+              Development, menggabungkan logika backend yang kuat dengan antarmuka frontend yang intuitif.</p>
+            <p>Saat ini, saya baru saja menyelesaikan proyek sistem informasi yang kompleks untuk instansi pemerintah,
+              menangani manajemen data dalam skala besar. Saya menikmati tantangan dalam mengoptimalkan performa
+              aplikasi dan memastikan keamanan data pengguna.</p>
+            <p>Di luar koding, saya selalu mengeksplorasi teknologi baru seperti AI dan IoT untuk melihat bagaimana
+              mereka bisa diintegrasikan ke dalam solusi praktis sehari-hari.</p>
+          </div>
+
+          <p class="stack-title">Tools & Technologies</p>
+          <ul class="stack-list">
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
+              </svg>
+              JavaScript
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2v16h12V4H6zm2 4h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z" />
+              </svg>
+              Laravel
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+              </svg>
+              React.js
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12.001 2c-5.522 0-10 4.477-10 10s4.478 10 10 10c5.523 0 10-4.477 10-10s-4.477-10-10-10zm3 13h-6v-2h6v2zm0-4h-6V9h6v2z" />
+              </svg>
+              Tailwind CSS
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+              </svg>
+              React Native
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 13H9V9h2v6zm4 0h-2V9h2v6z" />
+              </svg>
+              Git
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm6 14c0 .55-2.69 2-6 2s-6-1.45-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17zm0-4.5c0 .55-2.69 2-6 2s-6-1.45-6-2v-2.23C7.61 11.05 9.72 11.5 12 11.5s4.39-.45 6-1.23V12.5zM12 9.5c-3.31 0-6-1.12-6-2.5S8.69 4.5 12 4.5s6 1.12 6 2.5-2.69 2.5-6 2.5z" />
+              </svg>
+              MySQL
+            </li>
+            <li class="stack-item">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+              </svg>
+              VS Code
+            </li>
+          </ul>
+        </section>
+
+        <!-- ── Experience ── -->
+        <section id="experience" aria-label="Pengalaman kerja">
+          <div class="section-label">Pengalaman</div>
+          <p class="section-number">02</p>
+          <h2 class="section-heading">Pengalaman</h2>
+
+          <ol class="exp-list" aria-label="Daftar pengalaman">
+            <li class="exp-item">
+              <div class="exp-year">2023 — Now</div>
+              <div>
+                <a class="exp-role" href="#" aria-label="Freelance Software Engineer">
+                  Freelance Software Engineer
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+                <p class="exp-desc">Membangun solusi digital end-to-end untuk klien, mulai dari website profil
+                  perusahaan hingga sistem manajemen inventaris. Mengembangkan aplikasi mobile cross-platform untuk
+                  kebutuhan UMKM.</p>
+                <ul class="tag-list">
+                  <li class="tag">Laravel</li>
+                  <li class="tag">React Native</li>
+                  <li class="tag">PostgreSQL</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="exp-item">
+              <div class="exp-year">2020 — 2024</div>
+              <div>
+                <a class="exp-role" href="#" aria-label="Mahasiswa Ilmu Komputer">
+                  Mahasiswa Ilmu Komputer · Universitas
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+                <p class="exp-desc">Fokus pada Rekayasa Perangkat Lunak dan Pengembangan Mobile. Memimpin tim dalam
+                  proyek capstone pengembangan sistem IoT.</p>
+                <ul class="tag-list">
+                  <li class="tag">System Analysis</li>
+                  <li class="tag">Mobile Dev</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+
+          <a class="cv-link" href="#" aria-label="Lihat CV Lengkap">
+            <span>Lihat CV Lengkap</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </section>
+
+        <!-- ── Projects ── -->
+        <section id="projects" aria-label="Proyek pilihan">
+          <div class="section-label">Proyek</div>
+          <p class="section-number">03</p>
+          <h2 class="section-heading">Proyek</h2>
+
+          <ul class="project-list" aria-label="Daftar proyek">
+
+            <!-- Project 1 -->
+            <li class="project-item">
+              <div>
+                <a class="project-name" href="https://iklimsumut.com" target="_blank" rel="noreferrer"
+                  aria-label="Si-Stasiun-Klimatologi-Kelas-1-Sumatera-Utara">
+                  Si-Stasiun-Klimatologi-Kelas-1-Sumatera-Utara
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+                <p class="project-desc">Sistem informasi manajemen data klimatologi terintegrasi untuk UPT BMKG. Fitur
+                  meliputi manajemen data magang, visualisasi cuaca, dan pelaporan otomatis.</p>
+                <ul class="tag-list">
+                  <li class="tag">Laravel</li>
+                  <li class="tag">React</li>
+                  <li class="tag">Inertia.js</li>
+                  <li class="tag">MySQL</li>
+                </ul>
+              </div>
+              <div class="project-img-wrap">
+                <img src="./klimatologi.png" alt="Si-Stasuin-Klimatologi Project" loading="lazy" width="120"
+                  height="160">
+              </div>
+            </li>
+
+            <!-- Project 2 -->
+            <li class="project-item">
+              <div>
+                <a class="project-name" href="https://github.com/iwanBrt/Aplikasi-Gizi" target="_blank" rel="noreferrer"
+                  aria-label="AplikasiGizi NusaFit.AI">
+                  AplikasiGizi (SADEWA / NusaFit.AI)
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+                <p class="project-desc">Aplikasi mobile kesehatan berbasis AI untuk pemantauan gizi dan rekomendasi
+                  diet. Dikembangkan sebagai proyek kompetisi inovasi teknologi.</p>
+                <ul class="tag-list">
+                  <li class="tag">React Native</li>
+                  <li class="tag">AI / Python</li>
+                  <li class="tag">TensorFlow Lite</li>
+                </ul>
+              </div>
+              <div class="project-img-wrap">
+                <img src="./aplikasiGizi.jpeg" alt="AplikasiGizi Project" loading="lazy" width="120" height="160">
+              </div>
+            </li>
+
+            <!-- Project 3 -->
+            <li class="project-item">
+              <div>
+                <a class="project-name" href="https://github.com/iwanBrt/web-sekolah-belajarceria" target="_blank"
+                  rel="noreferrer" aria-label="Web Sekolah BelajarCeria">
+                  Web Sekolah BelajarCeria
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+                <p class="project-desc">Platform website sekolah modern untuk mengelola informasi akademik, profil
+                  sekolah, dan berita kegiatan siswa. Dirancang dengan antarmuka yang ramah pengguna untuk memudahkan
+                  akses informasi bagi siswa dan orang tua.</p>
+                <ul class="tag-list">
+                  <li class="tag">PHP</li>
+                  <li class="tag">MySQL</li>
+                  <li class="tag">Bootstrap</li>
+                </ul>
+              </div>
+              <div class="project-img-wrap">
+                <img src="./belajarceria.png" alt="Web Sekolah BelajarCeria Project" loading="lazy" width="120"
+                  height="160">
+              </div>
+            </li>
+
+            <!-- Project 4 -->
+            <li class="project-item">
+              <div>
+                <a class="project-name" href="https://github.com/iwanBrt/MobileApp" target="_blank" rel="noreferrer"
+                  aria-label="Aplikasi MyNotion">
+                  Aplikasi MyNotion
+                  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </a>
+                <p class="project-desc">Aplikasi produktivitas mobile yang terinspirasi oleh Notion. Memungkinkan
+                  pengguna membuat catatan, daftar tugas, dan manajemen proyek sederhana dengan antarmuka yang bersih
+                  dan sinkronisasi data lokal.</p>
+                <ul class="tag-list">
+                  <li class="tag">React Native</li>
+                  <li class="tag">Expo</li>
+                  <li class="tag">AsyncStorage</li>
+                </ul>
+              </div>
+              <div class="project-img-wrap">
+                <img src="./MyNotion.jpeg" alt="MyNotion Project" loading="lazy" width="120" height="160">
+              </div>
+            </li>
+
+          </ul>
+        </section>
+
+        <footer>
+          <p>© 2024 Iwan Agi Berutu — Dibangun dengan ♥ di Sumatera Utara</p>
+        </footer>
+
+      </main>
     </div>
+  </div>
 
-    <script>
-        // --- Spotlight Logic ---
-        const spotlight = document.querySelector('.spotlight');
-        
-        window.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            
-            spotlight.style.setProperty('--x', `${x}px`);
-            spotlight.style.setProperty('--y', `${y}px`);
-        });
+  <script>
+    // Spotlight effect
+    const spotlight = document.getElementById('spotlight');
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.addEventListener('mousemove', e => {
+        spotlight.style.background = `radial-gradient(500px at ${e.clientX}px ${e.clientY}px, rgba(167,139,250,0.06), transparent 80%)`;
+      });
+    }
 
-        // --- Active Navigation Logic ---
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute("id");
-                }
-            });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
-            navLinks.forEach((li) => {
-                li.classList.remove("active");
-                if (li.getAttribute("href").includes(current)) {
-                    li.classList.add("active");
-                }
-            });
-        });
-    </script>
+    sections.forEach(s => observer.observe(s));
+  </script>
+
 </body>
+
 </html>
