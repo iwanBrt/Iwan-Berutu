@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iwan Agi Berutu | Brutalist Portfolio</title>
+  <title>Iwan Agi Berutu | Software Engineer & Mobile Developer</title>
   <meta name="description"
     content="Portofolio Resmi Iwan Agi Berutu. Software Engineer dan Mobile Developer spesialis Laravel, Flutter, Next.js, dan IoT. Berbasis di Sumatera Utara, Indonesia.">
   <meta name="keywords"
@@ -12,6 +12,8 @@
   <meta name="author" content="Iwan Agi Berutu">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="Zc-b_FLO7UqgdWCUt5fIHHw1o5huC0B5xZbbyEMdY5k" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)">
 
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -27,10 +29,27 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Apply saved theme & language before paint (prevents flash) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+
+        var l = localStorage.getItem('lang') || 'id';
+        document.documentElement.setAttribute('data-lang', l);
+        document.documentElement.setAttribute('lang', l);
+      } catch (e) { }
+    })();
+  </script>
 
   <style>
-    /* ── NEO-BRUTALIST DESIGN SYSTEM ── */
+    /* ───────────────── DESIGN TOKENS ───────────────── */
     *,
     *::before,
     *::after {
@@ -40,691 +59,1932 @@
     }
 
     :root {
-      --bg: #f3f0e9; /* Warm brutalist beige */
-      --border-color: #000000;
-      
-      /* Brutalist Retro Palette */
-      --neon-yellow: #f1f500;
-      --neon-green: #2ecc71;
-      --neon-orange: #ff7f50;
-      --neon-purple: #a55eea;
-      --neon-pink: #ff4757;
-      --neon-cyan: #00d2d3;
-      --card-white: #ffffff;
-      
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-      
-      --brutalist-border: 3.5px solid #000000;
-      --brutalist-shadow: 6px 6px 0px #000000;
-      --brutalist-shadow-hover: 10px 10px 0px #000000;
-      --brutalist-shadow-active: 2px 2px 0px #000000;
+      --bg: #f8f9fb;
+      --bg-alt: #f1f3f7;
+      --surface: #ffffff;
+      --surface-2: #f6f7f9;
+      --text: #0f172a;
+      --text-2: #334155;
+      --muted: #64748b;
+      --border: #e6e8ee;
+      --border-strong: #d5d9e2;
+
+      --accent: #4f46e5;
+      --accent-2: #0ea5e9;
+      --accent-soft: rgba(79, 70, 229, 0.08);
+      --accent-ring: rgba(79, 70, 229, 0.25);
+      --success: #10b981;
+
+      --grad: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 20px;
+
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.14);
+
+      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --nav-h: 68px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b0d12;
+      --bg-alt: #0f1218;
+      --surface: #12151c;
+      --surface-2: #181c25;
+      --text: #e8ebf1;
+      --text-2: #c2c8d4;
+      --muted: #8a93a6;
+      --border: #222734;
+      --border-strong: #2d3343;
+
+      --accent: #818cf8;
+      --accent-2: #38bdf8;
+      --accent-soft: rgba(129, 140, 248, 0.1);
+      --accent-ring: rgba(129, 140, 248, 0.3);
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-h) + 16px);
     }
 
     body {
-      background-color: var(--bg);
-      background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px);
-      background-size: 24px 24px;
-      color: #000000;
-      font-family: var(--font-display);
-      font-size: 14.5px;
-      line-height: 1.6;
-      padding: 48px 24px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      transition: background-color .3s ease, color .3s ease;
     }
 
-    /* Scrollbar */
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
     ::-webkit-scrollbar {
       width: 10px;
     }
+
     ::-webkit-scrollbar-track {
       background: var(--bg);
-      border-left: var(--brutalist-border);
     }
+
     ::-webkit-scrollbar-thumb {
-      background: #000000;
+      background: var(--border-strong);
+      border-radius: 10px;
       border: 2px solid var(--bg);
     }
 
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
     .container {
-      max-width: 1100px;
+      width: 100%;
+      max-width: 1140px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 56px;
+      padding: 0 24px;
     }
 
-    /* ── HEADER STATUS BAR ── */
-    .top-bar {
-      background: #000000;
-      color: #ffffff;
-      padding: 12px 24px;
-      border: var(--brutalist-border);
-      box-shadow: var(--brutalist-shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    .top-bar-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .badge-live {
-      background: var(--neon-green);
-      color: #000000;
-      padding: 2px 8px;
-      font-size: 11px;
-      border: 1.5px solid #000000;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-
-    /* ── HERO BENTO GRID ── */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1.3fr 0.9fr;
-      gap: 28px;
-    }
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Brutalist Card Block */
-    .brutalist-card {
-      background: var(--card-white);
-      border: var(--brutalist-border);
-      box-shadow: var(--brutalist-shadow);
-      padding: 36px;
-      transition: all 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-      position: relative;
-    }
-    .brutalist-card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: var(--brutalist-shadow-hover);
-    }
-    .brutalist-card:active {
-      transform: translate(2px, 2px);
-      box-shadow: var(--brutalist-shadow-active);
-    }
-
-    /* Card Themes */
-    .card-yellow { background: var(--neon-yellow); }
-    .card-green { background: var(--neon-green); }
-    .card-orange { background: var(--neon-orange); }
-    .card-purple { background: var(--neon-purple); }
-    .card-pink { background: var(--neon-pink); }
-    .card-cyan { background: var(--neon-cyan); }
-
-    /* Left Card: About User */
-    .about-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .about-title {
-      font-size: 32px;
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 20px;
-      border-bottom: 3.5px solid #000000;
-      padding-bottom: 12px;
-    }
-    .about-desc {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 24px;
-    }
-    .badge-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .brutalist-badge {
-      background: #000000;
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 6px 12px;
-      border: 1.5px solid #000000;
-      font-weight: 700;
-      text-transform: uppercase;
-      box-shadow: 2px 2px 0px var(--neon-cyan);
-    }
-
-    /* Center Card: Portrait */
-    .portrait-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .portrait-frame {
-      width: 170px;
-      height: 170px;
-      border: 4px solid #000000;
-      box-shadow: 4px 4px 0px #000000;
-      overflow: hidden;
-      margin-bottom: 24px;
-      background: #000000;
-    }
-    .portrait-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .portrait-card:hover .portrait-img {
-      transform: scale(1.08) rotate(2deg);
-    }
-    .name-heading {
-      font-size: 36px;
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .subtitle-label {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 14px;
-      background: #000000;
-      color: #ffffff;
-      padding: 4px 12px;
-      display: inline-block;
-    }
-
-    /* Right Card: Statistics / Experience */
-    .stat-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      text-align: center;
-    }
-    .stat-label {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      border-bottom: 2px solid #000000;
-      width: 100%;
-      padding-bottom: 12px;
-    }
-    .stat-number {
-      font-size: 84px;
-      font-weight: 800;
-      line-height: 0.9;
-      margin: 24px 0;
-      letter-spacing: -2px;
-      position: relative;
-    }
-    .stat-number::after {
-      content: '+';
-      font-size: 40px;
-      position: absolute;
-      top: 0;
-      right: -24px;
-    }
-    .stat-footer {
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      background: #000000;
-      color: #ffffff;
-      padding: 4px 10px;
-      width: 100%;
-    }
-
-    /* ── BRUTALIST SECTION HEADERS ── */
-    .section-title-wrap {
-      display: flex;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-    .section-title {
-      font-size: 32px;
-      font-weight: 800;
-      text-transform: uppercase;
-      background: #000000;
-      color: #ffffff;
-      padding: 12px 28px;
-      border: var(--brutalist-border);
-      box-shadow: var(--brutalist-shadow);
-      display: inline-block;
-      letter-spacing: -1px;
-    }
-    .title-line {
-      flex: 1;
-      height: 6px;
-      background: #000000;
-      margin-left: 20px;
-      border-radius: 2px;
-    }
-
-    /* ── EXPERIENCE & EDUCATION GRID ── */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-    }
-    @media (max-width: 768px) {
-      .timeline-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .timeline-item {
-      border-left: 4px solid #000000;
-      padding-left: 24px;
-      margin-bottom: 32px;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -14px;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      background: var(--neon-yellow);
-      border: var(--brutalist-border);
-    }
-    .timeline-year {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 14px;
-      background: #000000;
-      color: #ffffff;
-      padding: 2px 10px;
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-    .timeline-title {
-      font-size: 18px;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .timeline-desc {
-      font-size: 13.5px;
-      color: #333333;
-    }
-
-    /* ── SOFTWARE SKILLS (Brutalist Grid) ── */
-    .skills-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .brutalist-skill-box {
-      background: #ffffff;
-      border: var(--brutalist-border);
-      box-shadow: 4px 4px 0px #000000;
-      padding: 12px 24px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 14px;
-      transition: all 0.15s ease;
-      cursor: default;
-    }
-    .brutalist-skill-box:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 7px 7px 0px #000000;
-      background: var(--neon-cyan);
-    }
-
-    /* ── PROJECTS BENTO SECTION ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 28px;
-    }
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-    .project-header-img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      border: 3px solid #000000;
-      overflow: hidden;
-      background: #000000;
-      margin-bottom: 20px;
-    }
-    .project-header-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .project-card:hover .project-header-img img {
-      transform: scale(1.05) rotate(1deg);
-    }
-    .project-gradient-box {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 800;
-      color: #000000;
-      text-transform: uppercase;
-    }
-    .project-name {
-      font-size: 20px;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .project-desc-text {
-      font-size: 13.5px;
-      margin-bottom: 20px;
-      color: #222222;
-      flex-grow: 1;
-    }
-    .project-techs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 24px;
-    }
-    .tech-badge {
-      background: #f0f0f0;
-      border: 1.5px solid #000000;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      padding: 2px 8px;
-      font-weight: 700;
-    }
-    .btn-row {
-      display: flex;
-      gap: 12px;
-    }
-    .brutalist-btn {
-      flex: 1;
-      padding: 10px 16px;
-      border: var(--brutalist-border);
-      box-shadow: 4px 4px 0px #000000;
-      background: #ffffff;
-      color: #000000;
-      font-weight: 800;
-      font-size: 13px;
-      text-transform: uppercase;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-    .brutalist-btn:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 7px 7px 0px #000000;
-      background: #000000;
-      color: #ffffff;
-    }
-    .brutalist-btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0px #000000;
-    }
-    .btn-accent {
-      background: var(--neon-orange);
-    }
-    .btn-accent:hover {
-      background: #000000;
-      color: #ffffff;
-    }
-
-    /* ── CONTACT GRID ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 500px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .contact-item-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 150px;
-    }
-    .contact-span-2 {
-      grid-column: span 2;
-    }
-    @media (max-width: 500px) {
-      .contact-span-2 {
-        grid-column: span 1;
-      }
-    }
-    .contact-icon-label {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      font-size: 18px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .contact-link-txt {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 13.5px;
-      color: #000000;
-      text-decoration: none;
-      background: #ffffff;
-      border: 2px solid #000000;
-      padding: 6px 12px;
-      width: fit-content;
-      box-shadow: 2px 2px 0px #000000;
-    }
-    .contact-link-txt:hover {
-      background: #000000;
-      color: #ffffff;
-    }
-    .insta-feed-container {
-      border: 3px solid #000000;
-      box-shadow: 4px 4px 0px #000000;
-      overflow: hidden;
-      margin: 20px 0 16px;
-      background: #000000;
-      height: 260px;
-    }
-    .insta-feed-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .insta-feed-container:hover .insta-feed-img {
-      transform: translateY(-35%);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 0;
-      border-top: 3.5px solid #000000;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    /* ── BRUTALIST PREVIEW MODAL ── */
-    .modal-overlay {
+    /* Ambient background */
+    .ambient {
       position: fixed;
       inset: 0;
-      background: rgba(243, 240, 233, 0.85);
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-      padding: 24px;
-    }
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .modal-container {
-      background: #ffffff;
-      border: 4px solid #000000;
-      box-shadow: 12px 12px 0px #000000;
-      width: 100%;
-      max-width: 1100px;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      transform: scale(0.95);
-      transition: transform 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    }
-    .modal-overlay.active .modal-container {
-      transform: scale(1);
-    }
-    .modal-header {
-      background: #000000;
-      color: #ffffff;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 4px solid #000000;
-    }
-    .modal-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .modal-title {
-      font-size: 18px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .modal-url-badge {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      background: var(--neon-yellow);
-      color: #000000;
-      padding: 3px 10px;
-      text-decoration: none;
-      font-weight: 700;
-      border: 2px solid #000000;
-    }
-    .modal-close {
-      background: var(--neon-pink);
-      color: #000000;
-      border: 2px solid #000000;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 2px 2px 0px #000000;
-    }
-    .modal-close:hover {
-      transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0px #000000;
-    }
-    .modal-close:active {
-      transform: translate(1px, 1px);
-      box-shadow: 1px 1px 0px #000000;
-    }
-    .modal-body {
-      flex: 1;
-      position: relative;
-      background: #ffffff;
-    }
-    .modal-body iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .modal-loader {
-      position: absolute;
-      inset: 0;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 16px;
-      text-transform: uppercase;
-    }
-    .loader-spinner {
-      width: 48px;
-      height: 48px;
-      border: 6px solid #000000;
-      border-top-color: var(--neon-cyan);
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-      margin-bottom: 12px;
-    }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-
-    /* ── FLOATING BG ELEMENTS ── */
-    .bg-elements-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
       z-index: -1;
       pointer-events: none;
       overflow: hidden;
     }
-    .bg-icon {
+
+    .ambient::before,
+    .ambient::after {
+      content: '';
       position: absolute;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: #000000;
-      user-select: none;
-      white-space: nowrap;
-      will-change: transform;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .5;
     }
-    @keyframes floatDrift {
-      0% {
-        transform: translate3d(0, 0, 0) rotate(0deg);
+
+    .ambient::before {
+      width: 520px;
+      height: 520px;
+      top: -180px;
+      right: -120px;
+      background: radial-gradient(circle, rgba(79, 70, 229, .18), transparent 70%);
+    }
+
+    .ambient::after {
+      width: 480px;
+      height: 480px;
+      top: 280px;
+      left: -200px;
+      background: radial-gradient(circle, rgba(14, 165, 233, .14), transparent 70%);
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 30%, transparent 75%);
+      opacity: .55;
+    }
+
+    /* ───────────────── NAVBAR ───────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-h);
+      z-index: 100;
+      transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--grad);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 6px 16px -6px var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--muted);
+      border-radius: 999px;
+      transition: color .2s, background-color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a.active {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color .2s, transform .2s var(--ease), color .2s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .theme-toggle .i-moon {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle .i-sun {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle .i-moon {
+      display: block;
+    }
+
+    .lang-toggle {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-2);
+    }
+
+    .lang-toggle:hover {
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .menu-toggle {
+        display: grid;
       }
-      50% {
-        transform: translate3d(120px, -80px, 0) rotate(180deg);
+
+      .nav-links {
+        position: fixed;
+        top: var(--nav-h);
+        left: 16px;
+        right: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        padding: 10px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity .2s ease, transform .25s var(--ease);
       }
+
+      .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+
+      .nav-links a {
+        border-radius: 10px;
+        padding: 12px 14px;
+      }
+
+      .nav-cta {
+        display: none !important;
+      }
+    }
+
+    /* ───────────────── BUTTONS ───────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: transform .2s var(--ease), box-shadow .2s ease, background-color .2s, border-color .2s, color .2s;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform .2s var(--ease);
+    }
+
+    .btn:hover svg.arrow {
+      transform: translateX(3px);
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      height: 38px;
+      padding: 0 16px;
+      font-size: 13.5px;
+    }
+
+    /* ───────────────── HERO (CENTERED HERO WITHOUT PHOTO) ───────────────── */
+    .hero {
+      padding: calc(var(--nav-h) + 88px) 0 110px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-center {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px;
+    }
+
+    .hero-pretitle {
+      font-family: var(--mono);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-title-main {
+      font-size: clamp(38px, 5.2vw, 66px);
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      margin-bottom: 26px;
+      max-width: 1040px;
+    }
+
+    .hero-title-main em {
+      display: inline-block;
+      font-style: italic;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding-right: 0.12em;
+      margin-right: -0.06em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.6vw, 18.5px);
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 860px;
+      margin-bottom: 44px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 84px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-wa {
+      background: #000000;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 15.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform .2s var(--ease), box-shadow .2s ease;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    [data-theme="dark"] .btn-hero-wa {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 6px 24px rgba(255, 255, 255, 0.22);
+    }
+
+    .btn-hero-wa:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-hero-wa .wa-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: grid;
+      place-items: center;
+    }
+
+    [data-theme="dark"] .btn-hero-wa .wa-arrow {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-hero-wa .wa-arrow svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .btn-hero-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 15.5px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all .2s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      background: var(--surface);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .btn-hero-secondary .sec-arrow {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--text);
+    }
+
+    .btn-hero-secondary .sec-arrow svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* Trust metrics strip */
+    .hero-trust {
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-trust-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .hero-stats-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-stat-value {
+      font-size: clamp(36px, 5.5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .hero-stat-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-stat-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--border-strong);
+    }
+
+    .hero-pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-pill-badge svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
+    }
+
+    /* ───────────────── FLOATING WHATSAPP CTA ───────────────── */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      transition: transform .25s var(--ease), box-shadow .25s ease;
+      text-decoration: none;
+    }
+
+    .floating-wa-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+      color: #ffffff;
+    }
+
+    .floating-wa-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .floating-wa-btn {
+        bottom: 18px;
+        right: 18px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+
+      .hero-stats-row {
+        gap: 20px;
+      }
+
+      .hero-stat-dot {
+        display: none;
+      }
+    }
+
+    .chip-ico {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .chip-ico svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .chip-1 {
+      bottom: 28px;
+      left: -36px;
+    }
+
+    .chip-2 {
+      top: 32px;
+      right: -28px;
+      animation-delay: -3s;
+    }
+
+    @keyframes floaty {
+
+      0%,
       100% {
-        transform: translate3d(-80px, 120px, 0) rotate(360deg);
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: calc(var(--nav-h) + 40px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats {
+        gap: 24px;
+      }
+
+      .stat-num {
+        font-size: 26px;
+      }
+    }
+
+    /* ───────────────── SECTIONS ───────────────── */
+    section.block {
+      padding: 96px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 460px;
+      font-size: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: transform .3s var(--ease), box-shadow .3s ease, border-color .3s ease;
+    }
+
+    /* ───────────────── ABOUT (EDITORIAL STORYTELLING) ───────────────── */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      gap: 52px;
+      align-items: stretch;
+    }
+
+    .about-visual-frame {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      height: 100%;
+      display: flex;
+    }
+
+    .about-visual-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 31% 25%;
+      display: block;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-tag {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .about-headline {
+      font-size: clamp(32px, 4.5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 22px;
+    }
+
+    .about-text {
+      font-size: 16.5px;
+      line-height: 1.7;
+      color: var(--text-2);
+      margin-bottom: 26px;
+    }
+
+    .about-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .about-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-2);
+    }
+
+    .about-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      background: #10b981;
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .about-check-box svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .about-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #000000;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14.5px;
+      transition: transform .2s var(--ease), box-shadow .2s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    [data-theme="dark"] .btn-dark-pill {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-dark-pill:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-dark-pill .pill-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: grid;
+      place-items: center;
+    }
+
+    [data-theme="dark"] .btn-dark-pill .pill-arrow {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-dark-pill .pill-arrow svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .about-social-link {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color .2s;
+      font-weight: 500;
+    }
+
+    .about-social-link:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 960px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .about-visual-frame {
+        max-width: 320px;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        height: auto;
+        min-height: unset;
+        margin: 0 auto;
+      }
+    }
+
+    /* ───────────────── TIMELINE ───────────────── */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .tl-card {
+      padding: 32px;
+    }
+
+    .tl-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .tl-head .chip-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+    }
+
+    .tl-head .chip-ico svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .tl-head h3 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .tl {
+      position: relative;
+      list-style: none;
+    }
+
+    .tl::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border-strong);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 32px;
+      padding-bottom: 28px;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    .tl-date {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .tl-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .tl-desc {
+      font-size: 14.5px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tl-card {
+        padding: 26px;
+      }
+    }
+
+    /* ───────────────── SKILLS ───────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 28px;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-strong);
+    }
+
+    .skill-card .chip-ico {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+    }
+
+    .skill-card .chip-ico svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .skill-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      transition: border-color .2s, color .2s, background-color .2s;
+    }
+
+    .skill-card .tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    @media (max-width: 1000px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tech logo marquee */
+    .marquee {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 0;
+      mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    }
+
+    .marquee-row {
+      overflow: hidden;
+      padding: 6px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-ltr var(--speed, 40s) linear infinite;
+    }
+
+    .marquee-track>* {
+      margin-right: 16px;
+    }
+
+    .marquee-row:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-ltr {
+      from {
+        transform: translateX(-50%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .tech-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px 12px 14px;
+      border-radius: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-2);
+      white-space: nowrap;
+      transition: transform .25s var(--ease), border-color .25s, box-shadow .25s, color .25s;
+    }
+
+    .tech-chip:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .tech-chip img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    [data-theme="dark"] .tech-chip img.invert-dark {
+      filter: invert(1);
+    }
+
+    /* ───────────────── PROJECTS (CLEAN MINIMALIST) ───────────────── */
+    .filters {
+      display: inline-flex;
+      gap: 6px;
+      padding: 3px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .filter-btn {
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all .2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 600;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      transition: border-color .25s ease, transform .25s var(--ease), box-shadow .25s ease;
+    }
+
+    .project:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .project.hide {
+      display: none;
+    }
+
+    .p-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .p-folder {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      transition: color .2s, border-color .2s;
+    }
+
+    .project:hover .p-folder {
+      color: var(--accent);
+      border-color: var(--accent-ring);
+    }
+
+    .p-folder svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .p-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .p-link-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: all .2s ease;
+    }
+
+    .p-link-icon:hover {
+      color: var(--text);
+      background: var(--surface-2);
+      border-color: var(--border);
+    }
+
+    .p-link-icon svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .p-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 8px;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .p-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .p-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .p-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .p-tech span {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .p-tech span:not(:last-child)::after {
+      content: '·';
+      margin-left: 8px;
+      color: var(--border-strong);
+    }
+
+    .p-preview-btn {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap .2s ease;
+    }
+
+    .p-preview-btn:hover {
+      gap: 7px;
+    }
+
+    .p-preview-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ───────────────── FIT CRITERIA (RED & GREEN CARDS) ───────────────── */
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .fit-card {
+      border-radius: 20px;
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+      transition: transform .25s var(--ease), box-shadow .25s ease;
+    }
+
+    .fit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .fit-card-red {
+      background: #fff8f8;
+      border-color: #ffdada;
+    }
+
+    [data-theme="dark"] .fit-card-red {
+      background: rgba(239, 68, 68, 0.06);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .fit-card-green {
+      background: #f6fdf8;
+      border-color: #d1fae5;
+    }
+
+    [data-theme="dark"] .fit-card-green {
+      background: rgba(16, 185, 129, 0.06);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .fit-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.015em;
+    }
+
+    .fit-card-red .fit-card-title {
+      color: #dc2626;
+    }
+
+    [data-theme="dark"] .fit-card-red .fit-card-title {
+      color: #f87171;
+    }
+
+    .fit-card-green .fit-card-title {
+      color: #16a34a;
+    }
+
+    [data-theme="dark"] .fit-card-green .fit-card-title {
+      color: #4ade80;
+    }
+
+    .fit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .fit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--text-2);
+    }
+
+    .fit-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .fit-icon svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .fit-icon-red {
+      background: #fee2e2;
+      color: #ef4444;
+    }
+
+    [data-theme="dark"] .fit-icon-red {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+    }
+
+    .fit-icon-green {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+
+    [data-theme="dark"] .fit-icon-green {
+      background: rgba(16, 185, 129, 0.2);
+      color: #4ade80;
+    }
+
+    @media (max-width: 860px) {
+      .fit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .fit-card {
+        padding: 28px 24px;
+      }
+    }
+
+    /* ───────────────── CONTACT ───────────────── */
+    .cta {
+      position: relative;
+      overflow: hidden;
+      padding: 56px;
+      border-radius: 28px;
+      background: #0f172a;
+      color: #fff;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    [data-theme="dark"] .cta {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      top: -200px;
+      background: radial-gradient(circle, rgba(99, 102, 241, .5), transparent 70%);
+      filter: blur(30px);
+    }
+
+    .cta::after {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      left: 30%;
+      bottom: -260px;
+      background: radial-gradient(circle, rgba(14, 165, 233, .35), transparent 70%);
+      filter: blur(30px);
+    }
+
+    .cta>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      font-size: clamp(26px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, .7);
+      max-width: 460px;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: #0f172a;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -8px rgba(255, 255, 255, .35);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(150px, auto);
+      gap: 20px;
+    }
+
+    .c-card {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    }
+
+    a.c-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-strong);
+    }
+
+    .c-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .c-ico {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .c-ico svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .c-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: all .25s var(--ease);
+    }
+
+    .c-arrow svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    a.c-card:hover .c-arrow {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+      transform: rotate(-45deg);
+    }
+
+    .c-name {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .c-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .c-link {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    .c-insta {
+      grid-row: span 2;
+    }
+
+    .insta-feed {
+      flex: 1;
+      min-height: 220px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .insta-feed img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: object-position 3s var(--ease);
+    }
+
+    .c-insta:hover .insta-feed img {
+      object-position: bottom center;
+    }
+
+    .span-2 {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .c-insta {
+        grid-row: span 1;
+        grid-column: span 2;
+      }
+
+      .insta-feed {
+        min-height: 260px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .span-2,
+      .c-insta {
+        grid-column: span 1;
+      }
+
+      .cta {
+        padding: 36px 28px;
+      }
+    }
+
+    /* ───────────────── FOOTER ───────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 96px;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .foot a:hover {
+      color: var(--text);
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* ───────────────── MODAL ───────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, .5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 1180px;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, .45);
+      transform: translateY(16px) scale(.98);
+      transition: transform .35s var(--ease);
+    }
+
+    .modal-overlay.active .modal {
+      transform: none;
+    }
+
+    .modal-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dots i {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff5f57;
+    }
+
+    .dots i:nth-child(2) {
+      background: #febc2e;
+    }
+
+    .dots i:nth-child(3) {
+      background: #28c840;
+    }
+
+    .modal-addr {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 14px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .modal-addr strong {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .modal-addr a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .modal-addr a:hover {
+      color: var(--accent);
+    }
+
+    .modal-body {
+      position: relative;
+      flex: 1;
+      background: #fff;
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .modal-loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      animation: spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .modal-overlay {
+        padding: 0;
+      }
+
+      .modal {
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      .dots {
+        display: none;
+      }
+    }
+
+    /* ───────────────── REVEAL ANIMATION ───────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
@@ -732,531 +1992,1551 @@
 
 <body>
 
-  <div class="container">
-
-    <!-- Top Status Bar -->
-    <div class="top-bar">
-      <span>HALA MADRID !!!</span>
-      <div class="top-bar-right">
-        <span class="badge-live">Live</span>
-        <span>Web Development & Android Development</span>
-      </div>
-    </div>
-
-    <!-- Hero Bento Grid -->
-    <div class="hero-grid">
-
-      <!-- About User -->
-      <div class="brutalist-card about-card card-orange">
-        <div>
-          <h2 class="about-title">About User</h2>
-          <p class="about-desc">
-            a software engineer hailing from Indonesia with ±2 years of experience in the field. My talents encompass crafting scalable web systems, creating mobile apps, and building IoT systems.
-          </p>
-        </div>
-        <div class="badge-wrap">
-          <span class="brutalist-badge">Critical Thinking</span>
-          <span class="brutalist-badge">Attention to Detail</span>
-          <span class="brutalist-badge">Visual Aesthetic</span>
-          <span class="brutalist-badge">Creativity</span>
-          <span class="brutalist-badge">Organized</span>
-        </div>
-      </div>
-
-      <!-- Center Profile -->
-      <div class="brutalist-card portrait-card card-green">
-        <div class="portrait-frame">
-          <img class="portrait-img" src="./profile.jpeg" alt="Iwan Agi Berutu">
-        </div>
-        <h1 class="name-heading">Iwan Agi<br>Berutu</h1>
-        <span class="subtitle-label">Sumatera Utara, Indonesia</span>
-      </div>
-
-      <!-- Experience Stats -->
-      <div class="brutalist-card stat-card card-yellow">
-        <span class="stat-label">Years of Experience</span>
-        <div class="stat-number">2</div>
-        <span class="stat-footer">Developer & Engineer</span>
-      </div>
-
-    </div>
-
-    <!-- Education & Organization Timeline Section -->
-    <div>
-      <div class="section-title-wrap">
-        <h2 class="section-title">Timeline</h2>
-        <div class="title-line"></div>
-      </div>
-
-      <div class="timeline-grid">
-        <!-- Education Column -->
-        <div class="brutalist-card">
-          <h3 class="about-title" style="font-size: 24px; border-bottom: 2px solid #000;">Education</h3>
-          <div class="timeline-item" style="margin-top: 24px;">
-            <span class="timeline-year">2023 - Now</span>
-            <h4 class="timeline-title">Universitas Negeri Medan</h4>
-            <p class="timeline-desc">Ilmu Komputer (Fokus Rekayasa Perangkat Lunak & Kecerdasan Buatan)</p>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-year">2020 - 2023</span>
-            <h4 class="timeline-title">SMA Negeri 1 Sigunung</h4>
-            <p class="timeline-desc">Jurusan MIPA</p>
-          </div>
-        </div>
-
-        <!-- Organization Column -->
-        <div class="brutalist-card">
-          <h3 class="about-title" style="font-size: 24px; border-bottom: 2px solid #000;">Organization</h3>
-          <div class="timeline-item" style="margin-top: 24px;">
-            <span class="timeline-year">2023 - Present</span>
-            <h4 class="timeline-title">Freelance Software Engineer</h4>
-            <p class="timeline-desc">Merancang & membangun sistem custom, dashboard IoT, serta aplikasi web mobile untuk UMKM.</p>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-year">2024 - Now</span>
-            <h4 class="timeline-title">Web Development Lead</h4>
-            <p class="timeline-desc">Membangun solusi digital end-to-end untuk klien, mulai dari website profil perusahaan hingga sistem manajemen inventaris. Mengembangkan aplikasi mobile cross-platform untuk kebutuhansekolah atau UMKM.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Software Skills Section -->
-    <div>
-      <div class="section-title-wrap">
-        <h2 class="section-title">Software Skills</h2>
-        <div class="title-line"></div>
-      </div>
-      <div class="skills-row">
-        <div class="brutalist-skill-box">JavaScript</div>
-        <div class="brutalist-skill-box">Laravel</div>
-        <div class="brutalist-skill-box">Node.js</div>
-        <div class="brutalist-skill-box">Next.js</div>
-        <div class="brutalist-skill-box">React.js</div>
-        <div class="brutalist-skill-box">Tailwind CSS</div>
-        <div class="brutalist-skill-box">Flutter / Dart</div>
-        <div class="brutalist-skill-box">Git Control</div>
-        <div class="brutalist-skill-box">MySQL / Postgres</div>
-        <div class="brutalist-skill-box">VS Code</div>
-        <div class="brutalist-skill-box">Internet of Things</div>
-      </div>
-    </div>
-
-    <!-- Projects Bento Section -->
-    <div>
-      <div class="section-title-wrap">
-        <h2 class="section-title">My Projects</h2>
-        <div class="title-line"></div>
-      </div>
-
-      <div class="projects-grid">
-
-        <!-- Project 1: Si-Klimatologi (BMKG Sumut) -->
-        <div class="brutalist-card project-card card-cyan">
-          <div>
-            <div class="project-header-img">
-              <img src="./klimatologi.png" alt="Si-Klimatologi">
-            </div>
-            <h3 class="project-name">Si-Klimatologi BMKG Sumut</h3>
-            <p class="project-desc-text">Sistem Informasi Resmi UPT Stasiun Klimatologi BMKG Sumatera Utara. Menyediakan data meteorologi, info cuaca, dan klimatologi terpercaya.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Laravel</span>
-              <span class="tech-badge">React</span>
-              <span class="tech-badge">Inertia.js</span>
-              <span class="tech-badge">MySQL</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('Si-Klimatologi BMKG Sumut', 'https://iklimsumut.com')">Live Preview</button>
-            <a class="brutalist-btn" href="https://iklimsumut.com" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 2: AplikasiGizi -->
-        <div class="brutalist-card project-card card-purple">
-          <div>
-            <div class="project-header-img">
-              <img src="./aplikasiGizi.jpeg" alt="AplikasiGizi">
-            </div>
-            <h3 class="project-name">AplikasiGizi (NusaFit.AI)</h3>
-            <p class="project-desc-text">Aplikasi mobile kesehatan berbasis AI untuk pemantauan gizi dan rekomendasi diet. Proyek inovasi teknologi dengan model kecerdasan buatan.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Flutter</span>
-              <span class="tech-badge">Dart</span>
-              <span class="tech-badge">AI / Python</span>
-              <span class="tech-badge">TensorFlow Lite</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <a class="brutalist-btn btn-accent" href="https://github.com/iwanBrt/Aplikasi-Gizi" target="_blank" rel="noreferrer">GitHub Repo</a>
-          </div>
-        </div>
-
-        <!-- Project 3: Web Sekolah BelajarCeria -->
-        <div class="brutalist-card project-card card-pink">
-          <div>
-            <div class="project-header-img">
-              <img src="./belajarceria.png" alt="Web Sekolah BelajarCeria">
-            </div>
-            <h3 class="project-name">Web Sekolah BelajarCeria</h3>
-            <p class="project-desc-text">Platform website sekolah modern untuk mengelola informasi akademik, profil sekolah, dan berita kegiatan siswa secara terpadu.</p>
-            <div class="project-techs">
-              <span class="tech-badge">PHP</span>
-              <span class="tech-badge">MySQL</span>
-              <span class="tech-badge">Bootstrap</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <a class="brutalist-btn btn-accent" href="https://github.com/iwanBrt/web-sekolah-belajarceria" target="_blank" rel="noreferrer">GitHub Repo</a>
-          </div>
-        </div>
-
-        <!-- Project 4: Aplikasi MyNotion -->
-        <div class="brutalist-card project-card card-orange">
-          <div>
-            <div class="project-header-img">
-              <img src="./MyNotion.jpeg" alt="Aplikasi MyNotion">
-            </div>
-            <h3 class="project-name">Aplikasi MyNotion</h3>
-            <p class="project-desc-text">Aplikasi produktivitas mobile yang terinspirasi oleh Notion. Memungkinkan pencatatan, daftar tugas, dan manajemen tugas dengan sinkronisasi lokal.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Flutter</span>
-              <span class="tech-badge">Dart</span>
-              <span class="tech-badge">Local Database</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <a class="brutalist-btn btn-accent" href="https://github.com/iwanBrt/MobileApp" target="_blank" rel="noreferrer">GitHub Repo</a>
-          </div>
-        </div>
-
-        <!-- Project 5: DFA Pattern Recognition -->
-        <div class="brutalist-card project-card card-yellow">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-cyan);">DFA</div>
-            </div>
-            <h3 class="project-name">DFA Pattern Recognition</h3>
-            <p class="project-desc-text">Aplikasi web interaktif untuk visualisasi dan simulasi pengenalan pola menggunakan Deterministic Finite Automata secara realtime.</p>
-            <div class="project-techs">
-              <span class="tech-badge">HTML</span>
-              <span class="tech-badge">CSS</span>
-              <span class="tech-badge">JavaScript</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('DFA Pattern Recognition', 'https://dfa-flame.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://dfa-flame.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 6: UlosBudaya -->
-        <div class="brutalist-card project-card card-green">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-pink);">UlosBudaya</div>
-            </div>
-            <h3 class="project-name">UlosBudaya — Interactive Weaving</h3>
-            <p class="project-desc-text">Platform edukasi tenun Ulos Batak tradisional untuk melestarikan warisan budaya Indonesia dengan interaksi modern.</p>
-            <div class="project-techs">
-              <span class="tech-badge">React</span>
-              <span class="tech-badge">Tailwind CSS</span>
-              <span class="tech-badge">Interactive Canvas</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('UlosBudaya — Interactive Weaving', 'https://ulos.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://ulos.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 7: KeripikKu -->
-        <div class="brutalist-card project-card card-cyan">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-yellow);">KeripikKu</div>
-            </div>
-            <h3 class="project-name">KeripikKu — Kentang Premium</h3>
-            <p class="project-desc-text">Landing page dan katalog produk interaktif untuk penjualan produk keripik kentang premium dengan desain modern yang memikat.</p>
-            <div class="project-techs">
-              <span class="tech-badge">HTML</span>
-              <span class="tech-badge">CSS</span>
-              <span class="tech-badge">JavaScript</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('KeripikKu — Kentang Premium', 'https://keripik-plum.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://keripik-plum.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 8: Quantum Physics Simulation -->
-        <div class="brutalist-card project-card card-purple">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-orange);">Quantum Physics</div>
-            </div>
-            <h3 class="project-name">Quantum Physics Simulation</h3>
-            <p class="project-desc-text">Simulator sains interaktif untuk memvisualisasikan mekanika gelombang dan fenomena partikel fisika secara langsung.</p>
-            <div class="project-techs">
-              <span class="tech-badge">React</span>
-              <span class="tech-badge">Chart.js</span>
-              <span class="tech-badge">Physics Engine</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('Quantum Physics Simulation', 'https://simulasi-fisika-kuantum.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://simulasi-fisika-kuantum.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 9: Kost Rilen -->
-        <div class="brutalist-card project-card card-pink">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-green);">Kost Rilen</div>
-            </div>
-            <h3 class="project-name">Kost Rilen — Hunian Eksklusif</h3>
-            <p class="project-desc-text">Website profil kost elit dan eksklusif di kota Medan dengan galeri foto, detail fasilitas premium, dan integrasi pesan langsung.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Next.js</span>
-              <span class="tech-badge">Tailwind CSS</span>
-              <span class="tech-badge">WA Integration</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('Kost Rilen — Hunian Eksklusif', 'https://kost-rilen.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://kost-rilen.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 10: Salon Saringar Pakpak -->
-        <div class="brutalist-card project-card card-orange">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-yellow);">Salon Saringar</div>
-            </div>
-            <h3 class="project-name">Salon Saringar Pakpak</h3>
-            <p class="project-desc-text">Website promosi salon kecantikan modern dengan informasi layanan perawatan rambut, kecantikan, katalog harga, dan kontak pemesanan.</p>
-            <div class="project-techs">
-              <span class="tech-badge">React</span>
-              <span class="tech-badge">Tailwind CSS</span>
-              <span class="tech-badge">Booking System</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('Salon Saringar Pakpak', 'https://salon-three-mu.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://salon-three-mu.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 11: TREEA HOUSE -->
-        <div class="brutalist-card project-card card-yellow">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-cyan);">TREEA HOUSE</div>
-            </div>
-            <h3 class="project-name">TREEA HOUSE — Kost Elite</h3>
-            <p class="project-desc-text">Platform informasi dan sewa kamar kost berkualitas premium di Medan untuk mahasiswa, karyawan, dan pasutri dengan maps terintegrasi.</p>
-            <div class="project-techs">
-              <span class="tech-badge">HTML</span>
-              <span class="tech-badge">CSS</span>
-              <span class="tech-badge">JavaScript</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('TREEA HOUSE — Kost Elite', 'https://treeahouse.vercel.app/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://treeahouse.vercel.app/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-        <!-- Project 12: BOS MOCHI MEDAN -->
-        <div class="brutalist-card project-card card-green">
-          <div>
-            <div class="project-header-img">
-              <div class="project-gradient-box" style="background: var(--neon-pink);">BOS MOCHI</div>
-            </div>
-            <h3 class="project-name">BOS MOCHI MEDAN</h3>
-            <p class="project-desc-text">Website landing page dan katalog jajanan mochi viral Medan, dengan integrasi order WhatsApp, review produk, dan lokasi outlet.</p>
-            <div class="project-techs">
-              <span class="tech-badge">Next.js</span>
-              <span class="tech-badge">Tailwind CSS</span>
-              <span class="tech-badge">WhatsApp API</span>
-            </div>
-          </div>
-          <div class="btn-row">
-            <button class="brutalist-btn btn-accent" onclick="launchLiveModal('BOS MOCHI MEDAN', 'https://mochimedan.web.id/')">Live Preview</button>
-            <a class="brutalist-btn" href="https://mochimedan.web.id/" target="_blank" rel="noreferrer">Visit</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Contact Bento Grid Section -->
-    <div>
-      <div class="section-title-wrap">
-        <h2 class="section-title">Contact Me</h2>
-        <div class="title-line"></div>
-      </div>
-
-      <div class="contact-grid">
-
-        <!-- GitHub -->
-        <div class="brutalist-card contact-item-card contact-span-2 card-orange">
-          <div>
-            <div class="contact-icon-label">
-              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-              </svg>
-              GitHub
-            </div>
-            <p style="font-weight: 500; margin-bottom: 16px;">Check my open source repositories and code contributions.</p>
-          </div>
-          <a class="contact-link-txt" href="https://github.com/iwanBrt" target="_blank" rel="noreferrer">github.com/iwanBrt</a>
-        </div>
-
-        <!-- Email -->
-        <div class="brutalist-card contact-item-card contact-span-2 card-cyan">
-          <div>
-            <div class="contact-icon-label">Email</div>
-            <p style="font-weight: 500; margin-bottom: 16px;">Send me an email for collaborations or project requests.</p>
-          </div>
-          <a class="contact-link-txt" href="mailto:iwanberutu.ib@gmail.com">iwanberutu.ib@gmail.com</a>
-        </div>
-
-        <!-- LinkedIn -->
-        <div class="brutalist-card contact-item-card card-purple">
-          <div>
-            <div class="contact-icon-label">LinkedIn</div>
-          </div>
-          <a class="contact-link-txt" href="https://www.linkedin.com/in/iwan-berutu" target="_blank" rel="noreferrer">Connect</a>
-        </div>
-
-        <!-- Instagram -->
-        <div class="brutalist-card contact-item-card card-pink" style="grid-row: span 2; justify-content: space-between;">
-          <div>
-            <div class="contact-icon-label">Instagram</div>
-            <div class="insta-feed-container">
-              <img class="insta-feed-img" src="./instagram_feed.png" alt="Instagram Feed">
-            </div>
-          </div>
-          <a class="contact-link-txt" href="https://www.instagram.com/wann_Brt" target="_blank" rel="noreferrer">@wann_Brt</a>
-        </div>
-
-        <!-- X / Twitter -->
-        <div class="brutalist-card contact-item-card card-yellow">
-          <div>
-            <div class="contact-icon-label">X / Twitter</div>
-          </div>
-          <a class="contact-link-txt" href="#">Follow</a>
-        </div>
-
-        <!-- Personal Blog -->
-        <div class="brutalist-card contact-item-card contact-span-2 card-green">
-          <div>
-            <div class="contact-icon-label">Personal Blog</div>
-            <p style="font-weight: 500; margin-bottom: 16px;">I write articles about software engineering and web development.</p>
-          </div>
-          <a class="contact-link-txt" href="https://iwanberutu.blog/" target="_blank" rel="noreferrer">iwanberutu.blog</a>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-      <p>© 2026 Iwan Agi Berutu — SUMATERA UTARA</p>
-    </footer>
-
+  <div class="ambient" aria-hidden="true">
+    <div class="grid-bg"></div>
   </div>
 
-  <!-- ── BRUTALIST PREVIEW MODAL ── -->
-  <div class="modal-overlay" id="brutalistModal" onclick="dismissModalOutside(event)">
-    <div class="modal-container">
-      <div class="modal-header">
-        <div class="modal-title-wrap">
-          <span class="modal-title" id="mTitle">Project Preview</span>
-          <a class="modal-url-badge" id="mUrl" href="#" target="_blank" rel="noreferrer">Open Site</a>
+  <!-- ───────── NAVBAR ───────── -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="logo" id="nav-logo" aria-label="Iwan Agi Berutu — Home">
+        <span>Iwan Berutu</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" id="nav-about">About</a></li>
+        <li><a href="#experience" id="nav-experience">Experience</a></li>
+        <li><a href="#skills" id="nav-skills">Skills</a></li>
+        <li><a href="#projects" id="nav-projects">Projects</a></li>
+        <li><a href="#fit" id="nav-fit">Fit?</a></li>
+        <li><a href="#contact" id="nav-contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn lang-toggle" id="langToggle" aria-label="Ganti Bahasa / Switch Language"
+          title="Ganti Bahasa / Switch Language">
+          <span id="langLabel">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <a href="mailto:iwanberutu.ib@gmail.com" class="btn btn-primary btn-sm nav-cta" id="nav-hire"
+          data-i18n="navHire">Contact Me</a>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ───────── HERO (CENTERED & FOCUSED ON SOLUTION) ───────── -->
+    <section class="hero" id="home">
+      <div class="container hero-center reveal">
+        <span class="hero-pretitle">IWAN AGI BERUTU &middot; SOFTWARE &amp; MOBILE SOLUTIONS</span>
+        <h1 class="hero-title-main">
+          I help business build a <em>solution</em> with software.
+        </h1>
+        <p class="hero-subtitle">
+          Mulai dari website scalable dan sistem kustom yang efisien, hingga aplikasi mobile cross-platform (Flutter)
+          dan integrasi IoT. Saya bantu bisnismu menemukan solusi teknologi terbaik &mdash; dari ide sampai live.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="https://wa.me/6281376524303?text=Halo%20Iwan%2C%20saya%20tertarik%20untuk%20konsultasi%20pembuatan%20website%2Faplikasi"
+            target="_blank" rel="noreferrer" class="btn-hero-wa" id="hero-wa-btn">
+            <span>Konsultasi via WhatsApp</span>
+            <span class="wa-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </a>
+          <a href="#projects" class="btn-hero-secondary" id="hero-services-btn">
+            <span>Lihat Karya &amp; Proyek</span>
+            <span class="sec-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </span>
+          </a>
         </div>
-        <button class="modal-close" onclick="closeModal()">X</button>
+
+        <div class="hero-trust">
+          <span class="hero-trust-label">PENGALAMAN &amp; REKAM JEJAK</span>
+          <div class="hero-stats-row">
+            <div class="hero-stat-block">
+              <span class="hero-stat-value">2+</span>
+              <span class="hero-stat-name">Tahun Pengalaman</span>
+            </div>
+            <span class="hero-stat-dot"></span>
+            <div class="hero-stat-block">
+              <span class="hero-stat-value">12+</span>
+              <span class="hero-stat-name">Proyek Selesai</span>
+            </div>
+            <span class="hero-stat-dot"></span>
+            <div class="hero-stat-block">
+              <span class="hero-stat-value">100%</span>
+              <span class="hero-stat-name">Dedikasi Solusi</span>
+            </div>
+          </div>
+
+          <div class="hero-pills">
+            <span class="hero-pill-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Sumatera Utara, ID
+            </span>
+            <span class="hero-pill-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              Full Stack &amp; Mobile
+            </span>
+            <span class="hero-pill-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Available for Project
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── ABOUT (EDITORIAL CLEAN) ───────── -->
+    <section class="block" id="about">
+      <div class="container">
+        <div class="about-layout reveal">
+          <!-- Visual: Profile with Feed Collage Frame -->
+          <div class="about-visual-frame">
+            <img src="./profile.jpeg" alt="Iwan Agi Berutu" loading="lazy">
+          </div>
+
+          <!-- Content: Editorial Layout -->
+          <div class="about-content">
+            <span class="about-tag">TENTANG SAYA</span>
+            <h2 class="about-headline">Developer yang ngirim karya, bukan cuma slide.</h2>
+            <p class="about-text">
+              Saya Iwan Agi Berutu, Software Engineer &amp; Mobile Developer dari Sumatera Utara. Sehari-hari saya
+              merancang web systems, aplikasi mobile (Flutter), dan solusi IoT untuk klien maupun UMKM. Jadi yang kamu
+              dapat bukan sekadar teori &mdash; tapi sistem nyata dan alur kerja yang siap pakai untuk deliver solusi
+              bisnismu.
+            </p>
+
+            <ul class="about-checklist">
+              <li class="about-check-item">
+                <span class="about-check-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Deliver proyek klien dengan clean code &amp; arsitektur scalable &mdash; bukan cuma
+                  prototype.</span>
+              </li>
+              <li class="about-check-item">
+                <span class="about-check-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Pengalaman nyata 2+ tahun membangun web modern, mobile app, hingga integrasi IoT.</span>
+              </li>
+              <li class="about-check-item">
+                <span class="about-check-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Setiap proyek selesai dengan handover tuntas: kamu paham cara mengelola &amp;
+                  menjalankannya.</span>
+              </li>
+            </ul>
+
+            <div class="about-actions">
+              <a href="#contact" class="btn-dark-pill" id="about-talk-btn">
+                <span>Ngobrol dulu, gratis</span>
+                <span class="pill-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── EXPERIENCE & EDUCATION ───────── -->
+    <section class="block section-alt" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">02 — Journey</span>
+            <h2 class="section-title">Experience &amp; Education</h2>
+          </div>
+          <p class="section-sub">The path that shaped how I think, learn, and build software.</p>
+        </div>
+
+        <div class="timeline-grid">
+          <div class="card tl-card reveal">
+            <div class="tl-head">
+              <span class="chip-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" />
+                  <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                </svg>
+              </span>
+              <h3>Experience</h3>
+            </div>
+            <ol class="tl">
+              <li class="tl-item">
+                <span class="tl-date">2024 — Now</span>
+                <h4 class="tl-title">Web Development Lead</h4>
+                <p class="tl-desc">Membangun solusi digital end-to-end untuk klien, mulai dari website profil
+                  perusahaan hingga sistem manajemen inventaris. Mengembangkan aplikasi mobile cross-platform untuk
+                  kebutuhan sekolah atau UMKM.</p>
+              </li>
+              <li class="tl-item">
+                <span class="tl-date">2023 — Present</span>
+                <h4 class="tl-title">Freelance Software Engineer</h4>
+                <p class="tl-desc">Merancang &amp; membangun sistem custom, dashboard IoT, serta aplikasi web mobile
+                  untuk UMKM.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="card tl-card reveal">
+            <div class="tl-head">
+              <span class="chip-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </span>
+              <h3>Education</h3>
+            </div>
+            <ol class="tl">
+              <li class="tl-item">
+                <span class="tl-date">2023 — Now</span>
+                <h4 class="tl-title">Universitas Negeri Medan</h4>
+                <p class="tl-desc">Ilmu Komputer (Fokus Rekayasa Perangkat Lunak &amp; Kecerdasan Buatan)</p>
+              </li>
+              <li class="tl-item">
+                <span class="tl-date">2020 — 2023</span>
+                <h4 class="tl-title">SMA Negeri 1 Sigunung</h4>
+                <p class="tl-desc">Jurusan MIPA</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── SKILLS ───────── -->
+    <section class="block" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">03 — Toolkit</span>
+            <h2 class="section-title">Software Skills</h2>
+          </div>
+          <p class="section-sub">Technologies I use daily to design, build and ship products.</p>
+        </div>
+
+        <div class="marquee reveal" id="techMarquee" aria-label="Tech stack">
+          <div class="marquee-row">
+            <div class="marquee-track" style="--speed: 45s"></div>
+          </div>
+          <div class="marquee-row">
+            <div class="marquee-track" style="--speed: 60s"></div>
+          </div>
+          <div class="marquee-row">
+            <div class="marquee-track" style="--speed: 50s"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── PROJECTS ───────── -->
+    <section class="block section-alt" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">04 — Work</span>
+            <h2 class="section-title">Selected Projects</h2>
+          </div>
+          <div class="filters" role="tablist" aria-label="Filter projects">
+            <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+            <button class="filter-btn" data-filter="web" id="filter-web">Web</button>
+            <button class="filter-btn" data-filter="mobile" id="filter-mobile">Mobile</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- Project 1: Si-Klimatologi (BMKG Sumut) -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 8 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('Si-Klimatologi BMKG Sumut', 'https://iklimsumut.com')"
+                  aria-label="Preview Si-Klimatologi">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://iklimsumut.com" target="_blank" rel="noreferrer" title="Visit Site"
+                  aria-label="Visit Si-Klimatologi">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">Si-Klimatologi BMKG Sumut</h3>
+            <p class="p-desc">Sistem Informasi Resmi UPT Stasiun Klimatologi BMKG Sumatera Utara. Menyediakan data
+              meteorologi, info cuaca, dan klimatologi terpercaya.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>Laravel</span><span>React</span><span>Inertia</span><span>MySQL</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('Si-Klimatologi BMKG Sumut', 'https://iklimsumut.com')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 2: AplikasiGizi -->
+          <article class="project reveal" data-cat="mobile">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="6" y="2" width="12" height="20" rx="2" />
+                  <path d="M11 18h2" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <a class="p-link-icon" href="https://github.com/iwanBrt/Aplikasi-Gizi" target="_blank" rel="noreferrer"
+                  title="GitHub Repository" aria-label="GitHub AplikasiGizi">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">AplikasiGizi (NusaFit.AI)</h3>
+            <p class="p-desc">Aplikasi mobile kesehatan berbasis AI untuk pemantauan gizi dan rekomendasi diet
+              menggunakan model machine learning.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>Flutter</span><span>Dart</span><span>Python</span><span>TF Lite</span>
+              </div>
+              <a class="p-preview-btn" href="https://github.com/iwanBrt/Aplikasi-Gizi" target="_blank" rel="noreferrer">
+                Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Web Sekolah BelajarCeria -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 8 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <a class="p-link-icon" href="https://github.com/iwanBrt/web-sekolah-belajarceria" target="_blank"
+                  rel="noreferrer" title="GitHub Repository" aria-label="GitHub Web Sekolah">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">Web Sekolah BelajarCeria</h3>
+            <p class="p-desc">Platform website sekolah untuk mengelola informasi akademik, profil instansi, dan
+              publikasi kegiatan siswa secara terpadu.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+              </div>
+              <a class="p-preview-btn" href="https://github.com/iwanBrt/web-sekolah-belajarceria" target="_blank"
+                rel="noreferrer">
+                Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 4: Aplikasi MyNotion -->
+          <article class="project reveal" data-cat="mobile">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="6" y="2" width="12" height="20" rx="2" />
+                  <path d="M11 18h2" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <a class="p-link-icon" href="https://github.com/iwanBrt/MobileApp" target="_blank" rel="noreferrer"
+                  title="GitHub Repository" aria-label="GitHub MyNotion">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">Aplikasi MyNotion</h3>
+            <p class="p-desc">Aplikasi produktivitas mobile yang berfokus pada pencatatan, task management, dan
+              sinkronisasi basis data lokal yang ringan.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>Flutter</span><span>Dart</span><span>Local DB</span>
+              </div>
+              <a class="p-preview-btn" href="https://github.com/iwanBrt/MobileApp" target="_blank" rel="noreferrer">
+                Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 5: DFA Pattern Recognition -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m10 15 5-3-5-3v6Z" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('DFA Pattern Recognition', 'https://dfa-flame.vercel.app/')"
+                  aria-label="Preview DFA">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://dfa-flame.vercel.app/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit DFA">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">DFA Pattern Recognition</h3>
+            <p class="p-desc">Aplikasi web interaktif untuk visualisasi dan simulasi pengenalan pola komputasi teoritis
+              Deterministic Finite Automata.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>JavaScript</span><span>Automata</span><span>Canvas</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('DFA Pattern Recognition', 'https://dfa-flame.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 6: UlosBudaya -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('UlosBudaya — Interactive Weaving', 'https://ulos.vercel.app/')"
+                  aria-label="Preview UlosBudaya">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://ulos.vercel.app/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit UlosBudaya">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">UlosBudaya — Interactive Weaving</h3>
+            <p class="p-desc">Platform edukasi tenun Ulos Batak tradisional untuk melestarikan warisan budaya nusantara
+              dengan simulasi interaktif.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>React</span><span>Tailwind</span><span>Canvas</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('UlosBudaya — Interactive Weaving', 'https://ulos.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 7: KeripikKu -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="8" cy="21" r="1" />
+                  <circle cx="19" cy="21" r="1" />
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('KeripikKu — Kentang Premium', 'https://keripik-plum.vercel.app/')"
+                  aria-label="Preview KeripikKu">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://keripik-plum.vercel.app/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit KeripikKu">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">KeripikKu — Kentang Premium</h3>
+            <p class="p-desc">Landing page dan katalog produk interaktif untuk pemasaran UMKM camilan keripik kentang
+              premium lokal.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('KeripikKu — Kentang Premium', 'https://keripik-plum.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 8: Quantum Physics Simulation -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('Quantum Physics Simulation', 'https://simulasi-fisika-kuantum.vercel.app/')"
+                  aria-label="Preview Quantum">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://simulasi-fisika-kuantum.vercel.app/" target="_blank"
+                  rel="noreferrer" title="Visit Site" aria-label="Visit Quantum">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">Quantum Physics Simulation</h3>
+            <p class="p-desc">Simulator sains edukatif untuk memvisualisasikan mekanika gelombang dan kalkulasi fungsi
+              probabilitas partikel.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>React</span><span>Chart.js</span><span>Physics</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('Quantum Physics Simulation', 'https://simulasi-fisika-kuantum.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 9: Kost Rilen -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('Kost Rilen — Hunian Eksklusif', 'https://kost-rilen.vercel.app/')"
+                  aria-label="Preview Kost Rilen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://kost-rilen.vercel.app/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit Kost Rilen">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">Kost Rilen — Hunian Eksklusif</h3>
+            <p class="p-desc">Website profil properti hunian eksklusif di Medan dengan galeri fasilitas, denah kamar,
+              dan direct WhatsApp inquiry.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>Next.js</span><span>Tailwind</span><span>WA API</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('Kost Rilen — Hunian Eksklusif', 'https://kost-rilen.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 10: Salon Saringar Pakpak -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3" />
+                  <circle cx="6" cy="18" r="3" />
+                  <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                  <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                  <line x1="8.12" y1="8.12" x2="12" y2="12" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('Salon Saringar Pakpak', 'https://salon-three-mu.vercel.app/')"
+                  aria-label="Preview Salon Saringar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://salon-three-mu.vercel.app/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit Salon Saringar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">Salon Saringar Pakpak</h3>
+            <p class="p-desc">Website promosi dan showcase layanan salon kecantikan dengan katalog perlakuan rambut,
+              tarif, dan reservasi online.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>React</span><span>Tailwind</span><span>Booking</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('Salon Saringar Pakpak', 'https://salon-three-mu.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 11: TREEA HOUSE -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('TREEA HOUSE — Kost Elite', 'https://treeahouse.vercel.app/')"
+                  aria-label="Preview TREEA HOUSE">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://treeahouse.vercel.app/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit TREEA HOUSE">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">TREEA HOUSE — Kost Elite</h3>
+            <p class="p-desc">Platform sewa kamar kost premium di Medan yang ramah mahasiswa dan pekerja dengan navigasi
+              peta terintegrasi.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+              <button class="p-preview-btn"
+                onclick="launchLiveModal('TREEA HOUSE — Kost Elite', 'https://treeahouse.vercel.app/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 12: BOS MOCHI MEDAN -->
+          <article class="project reveal" data-cat="web">
+            <div class="p-top">
+              <div class="p-folder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="8" cy="21" r="1" />
+                  <circle cx="19" cy="21" r="1" />
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                </svg>
+              </div>
+              <div class="p-links">
+                <button class="p-link-icon" title="Live Preview"
+                  onclick="launchLiveModal('BOS MOCHI MEDAN', 'https://mochimedan.web.id/')"
+                  aria-label="Preview BOS MOCHI">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+                <a class="p-link-icon" href="https://mochimedan.web.id/" target="_blank" rel="noreferrer"
+                  title="Visit Site" aria-label="Visit BOS MOCHI">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="p-title">BOS MOCHI MEDAN</h3>
+            <p class="p-desc">Landing page dan katalog kuliner mochi viral Medan dengan kemudahan order WhatsApp instan
+              dan info lokasi gerai.</p>
+            <div class="p-meta">
+              <div class="p-tech">
+                <span>Next.js</span><span>Tailwind</span><span>WA API</span>
+              </div>
+              <button class="p-preview-btn" onclick="launchLiveModal('BOS MOCHI MEDAN', 'https://mochimedan.web.id/')">
+                Live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── COCOKNYA BUAT SIAPA? (FIT & CRITERIA) ───────── -->
+    <section class="block" id="fit">
+      <div class="container">
+        <div class="section-head reveal" style="text-align: center; justify-content: center; margin-bottom: 40px;">
+          <div>
+            <span class="eyebrow" style="display: block; margin-bottom: 8px;">05 — Compatibility</span>
+            <h2 class="section-title">Cocoknya buat siapa?</h2>
+            <p class="section-sub" style="margin: 10px auto 0; max-width: 520px;">
+              Biar kerja sama kita efektif, transparan, dan menghasilkan produk digital yang benar-benar berdampak
+              nyata.
+            </p>
+          </div>
+        </div>
+
+        <div class="fit-grid">
+          <!-- Red Card: Bukan Untuk Kamu Jika -->
+          <div class="fit-card fit-card-red reveal">
+            <h3 class="fit-card-title">Ini BUKAN untuk kamu jika</h3>
+            <ul class="fit-list">
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-red">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </span>
+                <span>Kamu cari yang paling murah banting harga, bukan yang paling pas menyelesaikan akar
+                  masalahnya.</span>
+              </li>
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-red">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </span>
+                <span>Kamu mau pasang teknologi atau AI sekadar tren tanpa mau merapikan alur kerja sistem bisnismu
+                  sekarang.</span>
+              </li>
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-red">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </span>
+                <span>Kamu butuh hasil instan jadi besok tanpa ada ruang diskusi, perencanaan matang, dan iterasi
+                  pengujian.</span>
+              </li>
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-red">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </span>
+                <span>Kamu pasrah lepas tangan sepenuhnya tanpa mau meluangkan waktu memberikan gambaran kebutuhan
+                  bisnismu.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Green Card: Cocok Untuk Kamu Jika -->
+          <div class="fit-card fit-card-green reveal">
+            <h3 class="fit-card-title">Ini COCOK untuk kamu jika</h3>
+            <ul class="fit-list">
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Bisnismu sudah berjalan dan operasional mulai kewalahan dikelola manual sehingga butuh otomasi
+                  sistem web/mobile.</span>
+              </li>
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Website bisnismu sudah ada tapi belum maksimal mengonversi pengunjung menjadi pelanggan atau
+                  pembeli.</span>
+              </li>
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Kamu ingin sistem aplikasi yang reliabel, mudah dirawat, dan beneran dipakai tim kerja, bukan demo
+                  yang ditinggal.</span>
+              </li>
+              <li class="fit-item">
+                <span class="fit-icon fit-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>Kamu siap berkolaborasi: berbagi konteks bisnis, memberi feedback cepat saat review, lalu
+                  bertumbuh bareng.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── CONTACT ───────── -->
+    <section class="block section-alt" id="contact" style="padding-bottom: 0;">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">06 — Contact</span>
+            <h2 class="section-title">Let's connect</h2>
+          </div>
+          <p class="section-sub">Open for collaborations, freelance work, or just a friendly chat about tech.</p>
+        </div>
+
+        <div class="cta reveal">
+          <div>
+            <h2>Have a project in mind?</h2>
+            <p>Send me an email for collaborations or project requests — I usually reply within a day.</p>
+          </div>
+          <a href="mailto:iwanberutu.ib@gmail.com" class="btn btn-light" id="cta-email">
+            iwanberutu.ib@gmail.com
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- GitHub -->
+          <a class="card c-card span-2 reveal" href="https://github.com/iwanBrt" target="_blank" rel="noreferrer"
+            id="contact-github">
+            <div class="c-top">
+              <span class="c-ico"><svg fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    clip-rule="evenodd" />
+                </svg></span>
+              <span class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></span>
+            </div>
+            <div>
+              <div class="c-name">GitHub</div>
+              <p class="c-desc">Check my open source repositories and code contributions.</p>
+              <span class="c-link">github.com/iwanBrt</span>
+            </div>
+          </a>
+
+          <!-- Instagram -->
+          <a class="card c-card c-insta reveal" href="https://www.instagram.com/wann_Brt" target="_blank"
+            rel="noreferrer" id="contact-instagram">
+            <div class="c-top">
+              <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" />
+                </svg></span>
+              <span class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></span>
+            </div>
+            <div class="insta-feed">
+              <img src="./instagram_feed.png" alt="Instagram feed @wann_Brt" loading="lazy">
+            </div>
+            <div>
+              <div class="c-name">Instagram</div>
+              <span class="c-link">@wann_Brt</span>
+            </div>
+          </a>
+
+          <!-- Email -->
+          <a class="card c-card reveal" href="mailto:iwanberutu.ib@gmail.com" id="contact-email">
+            <div class="c-top">
+              <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 6L2 7" />
+                </svg></span>
+              <span class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></span>
+            </div>
+            <div>
+              <div class="c-name">Email</div>
+              <span class="c-link">iwanberutu.ib@gmail.com</span>
+            </div>
+          </a>
+
+          <!-- LinkedIn -->
+          <a class="card c-card reveal" href="https://www.linkedin.com/in/iwan-berutu" target="_blank" rel="noreferrer"
+            id="contact-linkedin">
+            <div class="c-top">
+              <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z" />
+                </svg></span>
+              <span class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></span>
+            </div>
+            <div>
+              <div class="c-name">LinkedIn</div>
+              <span class="c-link">Connect with me</span>
+            </div>
+          </a>
+
+          <!-- X / Twitter -->
+          <a class="card c-card reveal" href="#" id="contact-x">
+            <div class="c-top">
+              <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z" />
+                </svg></span>
+              <span class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></span>
+            </div>
+            <div>
+              <div class="c-name">X / Twitter</div>
+              <span class="c-link">Follow</span>
+            </div>
+          </a>
+
+          <!-- Personal Blog -->
+          <a class="card c-card reveal" href="https://iwanberutu.blog/" target="_blank" rel="noreferrer"
+            id="contact-blog">
+            <div class="c-top">
+              <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                </svg></span>
+              <span class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg></span>
+            </div>
+            <div>
+              <div class="c-name">Personal Blog</div>
+              <p class="c-desc">I write articles about software engineering and web development.</p>
+              <span class="c-link">iwanberutu.blog</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────── FLOATING WHATSAPP CTA ───────── -->
+  <a href="https://wa.me/6281376524303?text=Halo%20Iwan%2C%20saya%20ingin%20konsultasi%20proyek%20website%2Faplikasi"
+    target="_blank" rel="noreferrer" class="floating-wa-btn" id="floatingWaBtn" aria-label="Hubungi saya via WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+    </svg>
+    <span>Hubungi Saya</span>
+  </a>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer>
+    <div class="container foot">
+      <p>© <span id="year">2026</span> Iwan Agi Berutu — Sumatera Utara, Indonesia</p>
+      <div class="foot-links">
+        <a href="https://github.com/iwanBrt" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/iwan-berutu" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ───────── LIVE PREVIEW MODAL ───────── -->
+  <div class="modal-overlay" id="previewModal" onclick="dismissModalOutside(event)" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+      <div class="modal-bar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="modal-addr">
+          <strong id="mTitle">Project Preview</strong>
+          <a id="mUrl" href="#" target="_blank" rel="noreferrer">Open Site</a>
+        </div>
+        <a class="icon-btn" id="mOpen" href="#" target="_blank" rel="noreferrer" aria-label="Open in new tab">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          </svg>
+        </a>
+        <button class="icon-btn" id="mClose" onclick="closeModal()" aria-label="Close preview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
       </div>
       <div class="modal-body">
         <div class="modal-loader" id="mLoader">
-          <div style="text-align: center;">
-            <div class="loader-spinner" style="margin: 0 auto 12px;"></div>
-            <div>LOADING PROJECT LIVE PREVIEW...</div>
-          </div>
+          <div class="spinner"></div>
+          <span>Loading live preview…</span>
         </div>
-        <iframe id="mIframe" src=""></iframe>
+        <iframe id="mIframe" src="" title="Project live preview"></iframe>
       </div>
     </div>
   </div>
 
   <script>
+    /* ── Live preview modal ── */
     function launchLiveModal(title, url) {
-      const modal = document.getElementById('brutalistModal');
-      const mTitle = document.getElementById('mTitle');
-      const mUrl = document.getElementById('mUrl');
+      const modal = document.getElementById('previewModal');
       const mIframe = document.getElementById('mIframe');
       const mLoader = document.getElementById('mLoader');
 
-      mTitle.textContent = title;
+      document.getElementById('mTitle').textContent = title;
+      const mUrl = document.getElementById('mUrl');
       mUrl.href = url;
-      mUrl.textContent = url;
-      mIframe.src = url;
+      mUrl.textContent = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      document.getElementById('mOpen').href = url;
+
       mLoader.style.display = 'flex';
+      mIframe.onload = () => { mLoader.style.display = 'none'; };
+      mIframe.src = url;
 
       modal.classList.add('active');
-
-      mIframe.onload = function() {
-        mLoader.style.display = 'none';
-      };
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-      const modal = document.getElementById('brutalistModal');
-      const mIframe = document.getElementById('mIframe');
+      const modal = document.getElementById('previewModal');
       modal.classList.remove('active');
-      mIframe.src = '';
+      modal.setAttribute('aria-hidden', 'true');
+      document.getElementById('mIframe').src = '';
+      document.body.style.overflow = '';
     }
 
     function dismissModalOutside(e) {
-      if (e.target.id === 'brutalistModal') {
-        closeModal();
-      }
+      if (e.target.id === 'previewModal') closeModal();
     }
 
-    // Floating Background Code Elements
-    document.addEventListener("DOMContentLoaded", () => {
-      const bgContainer = document.createElement("div");
-      bgContainer.className = "bg-elements-container";
-      document.body.prepend(bgContainer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
 
-      const icons = ["</>", "{ }", "const", "if", "[]", "=>", "JSON", "<html>", "&&", "||", "++", "db", "git", "import", "class"];
-      const numberOfIcons = 20;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-      for (let i = 0; i < numberOfIcons; i++) {
-        const span = document.createElement("span");
-        span.className = "bg-icon";
-        span.textContent = icons[Math.floor(Math.random() * icons.length)];
-        
-        span.style.left = `${Math.random() * 100}vw`;
-        span.style.top = `${Math.random() * 100}vh`;
-        
-        const size = Math.floor(Math.random() * 24) + 16;
-        span.style.fontSize = `${size}px`;
-        span.style.opacity = (Math.random() * 0.06 + 0.03).toFixed(2);
-        
-        const duration = Math.floor(Math.random() * 40) + 30;
-        const delay = Math.floor(Math.random() * 20) * -1;
-        span.style.animation = `floatDrift ${duration}s linear ${delay}s infinite alternate`;
-        
-        const initialRotation = Math.floor(Math.random() * 360);
-        span.style.transform = `rotate(${initialRotation}deg)`;
+      /* ── Dual Language (ID / EN) Toggle Engine ── */
+      const langData = {
+        id: {
+          langLabel: 'EN',
+          navAbout: 'Tentang',
+          navExperience: 'Pengalaman',
+          navSkills: 'Keahlian',
+          navProjects: 'Proyek',
+          navFit: 'Kesesuaian?',
+          navContact: 'Kontak',
+          navHire: 'Hubungi Saya',
+          heroTitle: 'I help business build a <em>solution</em> with software.',
+          heroSubtitle: 'Mulai dari website scalable dan sistem kustom yang efisien, hingga aplikasi mobile cross-platform (Flutter) dan integrasi IoT. Saya bantu bisnismu menemukan solusi teknologi terbaik — dari ide sampai live.',
+          heroWaBtn: 'Konsultasi via WhatsApp',
+          heroServicesBtn: 'Lihat Karya & Proyek',
+          heroTrustLabel: 'PENGALAMAN & REKAM JEJAK',
+          heroStat1: 'Tahun Pengalaman',
+          heroStat2: 'Proyek Selesai',
+          heroStat3: 'Dedikasi Solusi',
+          heroPillAvail: 'Available for Project',
+          aboutTag: 'TENTANG SAYA',
+          aboutHeadline: 'Developer yang ngirim karya, bukan cuma slide.',
+          aboutText: 'Saya Iwan Agi Berutu, Software Engineer & Mobile Developer dari Sumatera Utara. Sehari-hari saya merancang web systems, aplikasi mobile (Flutter), dan solusi IoT untuk klien maupun UMKM. Jadi yang kamu dapat bukan sekadar teori — tapi sistem nyata dan alur kerja yang siap pakai untuk deliver solusi bisnismu.',
+          aboutCheck1: 'Deliver proyek klien dengan clean code & arsitektur scalable — bukan cuma prototype.',
+          aboutCheck2: 'Pengalaman nyata 2+ tahun membangun web modern, mobile app, hingga integrasi IoT.',
+          aboutCheck3: 'Setiap proyek selesai dengan handover tuntas: kamu paham cara mengelola & menjalankannya.',
+          aboutTalkBtn: 'Ngobrol dulu, gratis',
+          expEyebrow: '02 — Journey',
+          expTitle: 'Experience & Education',
+          expSub: 'The path that shaped how I think, learn, and build software.',
+          expHead1: 'Experience',
+          expHead2: 'Education',
+          expDesc1: 'Membangun solusi digital end-to-end untuk klien, mulai dari website profil perusahaan hingga sistem manajemen inventaris. Mengembangkan aplikasi mobile cross-platform untuk kebutuhan sekolah atau UMKM.',
+          expDesc2: 'Merancang & membangun sistem custom, dashboard IoT, serta aplikasi web mobile untuk UMKM.',
+          expEdu1: 'Ilmu Komputer (Fokus Rekayasa Perangkat Lunak & Kecerdasan Buatan)',
+          expEdu2: 'Jurusan MIPA',
+          skillsEyebrow: '03 — Toolkit',
+          skillsTitle: 'Software Skills',
+          skillsSub: 'Technologies I use daily to design, build and ship products.',
+          projEyebrow: '04 — Work',
+          projTitle: 'Selected Projects',
+          filterAll: 'Semua',
+          fitEyebrow: '05 — Compatibility',
+          fitTitle: 'Cocoknya buat siapa?',
+          fitSub: 'Biar kerja sama kita efektif, transparan, dan menghasilkan produk digital yang benar-benar berdampak nyata.',
+          fitRedTitle: 'Ini BUKAN untuk kamu jika',
+          fitRed1: 'Kamu cari yang paling murah banting harga, bukan yang paling pas menyelesaikan akar masalahnya.',
+          fitRed2: 'Kamu mau pasang teknologi atau AI sekadar tren tanpa mau merapikan alur kerja sistem bisnismu sekarang.',
+          fitRed3: 'Kamu butuh hasil instan jadi besok tanpa ada ruang diskusi, perencanaan matang, dan iterasi pengujian.',
+          fitRed4: 'Kamu pasrah lepas tangan sepenuhnya tanpa mau meluangkan waktu memberikan gambaran kebutuhan bisnismu.',
+          fitGreenTitle: 'Ini COCOK untuk kamu jika',
+          fitGreen1: 'Bisnismu sudah berjalan dan operasional mulai kewalahan dikelola manual sehingga butuh otomasi sistem web/mobile.',
+          fitGreen2: 'Website bisnismu sudah ada tapi belum maksimal mengonversi pengunjung menjadi pelanggan atau pembeli.',
+          fitGreen3: 'Kamu ingin sistem aplikasi yang reliabel, mudah dirawat, dan beneran dipakai tim kerja, bukan demo yang ditinggal.',
+          fitGreen4: 'Kamu siap berkolaborasi: berbagi konteks bisnis, memberi feedback cepat saat review, lalu bertumbuh bareng.',
+          contactEyebrow: '06 — Contact',
+          contactTitle: "Let's connect",
+          contactSub: 'Open for collaborations, freelance work, or just a friendly chat about tech.',
+          ctaTitle: 'Have a project in mind?',
+          ctaDesc: 'Send me an email for collaborations or project requests — I usually reply within a day.',
+          floatingWa: 'Hubungi Saya'
+        },
+        en: {
+          langLabel: 'ID',
+          navAbout: 'About',
+          navExperience: 'Experience',
+          navSkills: 'Skills',
+          navProjects: 'Projects',
+          navFit: 'Fit?',
+          navContact: 'Contact',
+          navHire: 'Contact Me',
+          heroTitle: 'I help businesses build a <em>solution</em> with software.',
+          heroSubtitle: 'From scalable web architectures and custom workflow engines to cross-platform mobile apps (Flutter) and IoT integrations. I help your business implement the right software solutions — from blueprint to production.',
+          heroWaBtn: 'Consult via WhatsApp',
+          heroServicesBtn: 'View Work & Projects',
+          heroTrustLabel: 'EXPERIENCE & TRACK RECORD',
+          heroStat1: 'Years Experience',
+          heroStat2: 'Completed Projects',
+          heroStat3: 'Solution Dedication',
+          heroPillAvail: 'Available for Project',
+          aboutTag: 'ABOUT ME',
+          aboutHeadline: 'A developer who ships results, not just slides.',
+          aboutText: "I'm Iwan Agi Berutu, a Software Engineer & Mobile Developer from North Sumatra. Daily, I architect web systems, mobile applications (Flutter), and IoT solutions for clients and businesses. What you get isn't mere theory — but production-ready systems and workflows built to deliver real business impact.",
+          aboutCheck1: 'Deliver client projects with clean code & scalable architecture — not just prototypes.',
+          aboutCheck2: '2+ years of hands-on experience building modern web, mobile apps, and IoT integrations.',
+          aboutCheck3: 'Every project is delivered with thorough handover: you fully know how to operate & manage it.',
+          aboutTalkBtn: "Let's talk, it's free",
+          expEyebrow: '02 — Journey',
+          expTitle: 'Experience & Education',
+          expSub: 'The path that shaped how I think, learn, and build software.',
+          expHead1: 'Experience',
+          expHead2: 'Education',
+          expDesc1: 'Building end-to-end digital solutions for clients, from corporate websites to inventory management systems. Developing cross-platform mobile apps for institutions and businesses.',
+          expDesc2: 'Architecting & developing custom systems, IoT dashboards, and responsive mobile-web apps for SMBs.',
+          expEdu1: 'Computer Science (Focus on Software Engineering & Artificial Intelligence)',
+          expEdu2: 'Science & Mathematics Major',
+          skillsEyebrow: '03 — Toolkit',
+          skillsTitle: 'Software Skills',
+          skillsSub: 'Technologies I use daily to design, build and ship products.',
+          projEyebrow: '04 — Work',
+          projTitle: 'Selected Projects',
+          filterAll: 'All',
+          fitEyebrow: '05 — Compatibility',
+          fitTitle: 'Is this the right fit for you?',
+          fitSub: 'Ensuring our collaboration is effective, transparent, and yields digital products with tangible business impact.',
+          fitRedTitle: 'This is NOT for you if',
+          fitRed1: "You're only looking for the cheapest bargain, rather than the right partner to solve root problems.",
+          fitRed2: 'You want hype tech or AI as a buzzword without refining your current business workflows.',
+          fitRed3: 'You expect overnight deliverables with no space for discussion, planning, and proper testing.',
+          fitRed4: 'You want to stay completely detached without taking time to share your core business requirements.',
+          fitGreenTitle: 'This is a GREAT FIT if',
+          fitGreen1: 'Your business is growing and manual operations are overwhelmed, demanding web/mobile automation.',
+          fitGreen2: 'You already have a web presence but want to maximize conversions and customer engagement.',
+          fitGreen3: 'You need reliable, maintainable software that your team will truly adopt daily, not an abandoned demo.',
+          fitGreen4: "You're ready to collaborate: sharing business context, giving rapid review feedback, and scaling together.",
+          contactEyebrow: '06 — Contact',
+          contactTitle: "Let's connect",
+          contactSub: 'Open for collaborations, freelance work, or just a friendly chat about tech.',
+          ctaTitle: 'Have a project in mind?',
+          ctaDesc: 'Send me an email for collaborations or project requests — I usually reply within a day.',
+          floatingWa: 'Chat via WhatsApp'
+        }
+      };
 
-        bgContainer.appendChild(span);
+      function setLanguage(lang) {
+        const d = langData[lang] || langData.id;
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        try { localStorage.setItem('lang', lang); } catch (e) { }
+
+        const setText = (sel, txt) => {
+          const el = document.querySelector(sel);
+          if (el) el.textContent = txt;
+        };
+        const setHTML = (sel, html) => {
+          const el = document.querySelector(sel);
+          if (el) el.innerHTML = html;
+        };
+
+        setText('#langLabel', d.langLabel);
+        setText('#nav-about', d.navAbout);
+        setText('#nav-experience', d.navExperience);
+        setText('#nav-skills', d.navSkills);
+        setText('#nav-projects', d.navProjects);
+        setText('#nav-fit', d.navFit);
+        setText('#nav-contact', d.navContact);
+        setText('#nav-hire', d.navHire);
+
+        setHTML('.hero-title-main', d.heroTitle);
+        setText('.hero-subtitle', d.heroSubtitle);
+        setText('#hero-wa-btn span', d.heroWaBtn);
+        setText('#hero-services-btn span', d.heroServicesBtn);
+        setText('.hero-trust-label', d.heroTrustLabel);
+
+        const statNames = document.querySelectorAll('.hero-stat-name');
+        if (statNames[0]) statNames[0].textContent = d.heroStat1;
+        if (statNames[1]) statNames[1].textContent = d.heroStat2;
+        if (statNames[2]) statNames[2].textContent = d.heroStat3;
+
+        setText('.about-tag', d.aboutTag);
+        setText('.about-headline', d.aboutHeadline);
+        setText('.about-text', d.aboutText);
+
+        const checkSpans = document.querySelectorAll('.about-check-item span:last-child');
+        if (checkSpans[0]) checkSpans[0].textContent = d.aboutCheck1;
+        if (checkSpans[1]) checkSpans[1].textContent = d.aboutCheck2;
+        if (checkSpans[2]) checkSpans[2].textContent = d.aboutCheck3;
+        setText('#about-talk-btn span:first-child', d.aboutTalkBtn);
+
+        setText('#experience .eyebrow', d.expEyebrow);
+        setText('#experience .section-title', d.expTitle);
+        setText('#experience .section-sub', d.expSub);
+        const tlHeads = document.querySelectorAll('#experience .tl-head h3');
+        if (tlHeads[0]) tlHeads[0].textContent = d.expHead1;
+        if (tlHeads[1]) tlHeads[1].textContent = d.expHead2;
+        const tlDescs = document.querySelectorAll('#experience .tl-desc');
+        if (tlDescs[0]) tlDescs[0].textContent = d.expDesc1;
+        if (tlDescs[1]) tlDescs[1].textContent = d.expDesc2;
+        if (tlDescs[2]) tlDescs[2].textContent = d.expEdu1;
+        if (tlDescs[3]) tlDescs[3].textContent = d.expEdu2;
+
+        setText('#skills .eyebrow', d.skillsEyebrow);
+        setText('#skills .section-title', d.skillsTitle);
+        setText('#skills .section-sub', d.skillsSub);
+
+        setText('#projects .eyebrow', d.projEyebrow);
+        setText('#projects .section-title', d.projTitle);
+        setText('#filter-all', d.filterAll);
+
+        setText('#fit .eyebrow', d.fitEyebrow);
+        setText('#fit .section-title', d.fitTitle);
+        setText('#fit .section-sub', d.fitSub);
+        setText('.fit-card-red .fit-card-title', d.fitRedTitle);
+        const redItems = document.querySelectorAll('.fit-card-red .fit-item span:last-child');
+        if (redItems[0]) redItems[0].textContent = d.fitRed1;
+        if (redItems[1]) redItems[1].textContent = d.fitRed2;
+        if (redItems[2]) redItems[2].textContent = d.fitRed3;
+        if (redItems[3]) redItems[3].textContent = d.fitRed4;
+
+        setText('.fit-card-green .fit-card-title', d.fitGreenTitle);
+        const greenItems = document.querySelectorAll('.fit-card-green .fit-item span:last-child');
+        if (greenItems[0]) greenItems[0].textContent = d.fitGreen1;
+        if (greenItems[1]) greenItems[1].textContent = d.fitGreen2;
+        if (greenItems[2]) greenItems[2].textContent = d.fitGreen3;
+        if (greenItems[3]) greenItems[3].textContent = d.fitGreen4;
+
+        setText('#contact .eyebrow', d.contactEyebrow);
+        setText('#contact .section-title', d.contactTitle);
+        setText('#contact .section-sub', d.contactSub);
+        setText('.cta h2', d.ctaTitle);
+        setText('.cta p', d.ctaDesc);
+        setText('#floatingWaBtn span', d.floatingWa);
       }
+
+      const langToggleBtn = document.getElementById('langToggle');
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-lang') || 'id';
+          const next = current === 'id' ? 'en' : 'id';
+          setLanguage(next);
+        });
+      }
+
+      let savedLang = 'id';
+      try { savedLang = localStorage.getItem('lang') || 'id'; } catch (e) { }
+      setLanguage(savedLang);
+
+      /* ── Theme toggle ── */
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const root = document.documentElement;
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+      });
+
+      /* ── Navbar scroll state ── */
+      const nav = document.getElementById('nav');
+      const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ── Mobile menu ── */
+      const menuBtn = document.getElementById('menuToggle');
+      const links = document.getElementById('navLinks');
+      menuBtn.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', false);
+      }));
+
+      /* ── Active nav link on scroll ── */
+      const navMap = {};
+      links.querySelectorAll('a').forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
+      const secObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            Object.values(navMap).forEach(a => a.classList.remove('active'));
+            const link = navMap[entry.target.id];
+            if (link) link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      document.querySelectorAll('main section[id]').forEach(s => secObserver.observe(s));
+
+      /* ── Reveal on scroll ── */
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        // stagger siblings inside grids
+        const parent = el.parentElement;
+        const siblings = [...parent.children].filter(c => c.classList.contains('reveal'));
+        const idx = siblings.indexOf(el);
+        el.style.transitionDelay = `${Math.min(idx, 5) * 70}ms`;
+        revealObserver.observe(el);
+      });
+
+      /* ── Tech logo marquee (random order, 2 rows, left → right) ── */
+      const DEV = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
+      const techs = [
+        ['HTML5', 'html5/html5-original.svg'],
+        ['CSS3', 'css3/css3-original.svg'],
+        ['JavaScript', 'javascript/javascript-original.svg'],
+        ['React', 'react/react-original.svg'],
+        ['Next.js', 'nextjs/nextjs-original.svg', true],
+        ['Tailwind CSS', 'tailwindcss/tailwindcss-original.svg'],
+        ['Bootstrap', 'bootstrap/bootstrap-original.svg'],
+        ['Laravel', 'laravel/laravel-original.svg'],
+        ['PHP', 'php/php-original.svg'],
+        ['Node.js', 'nodejs/nodejs-original.svg'],
+        ['MySQL', 'mysql/mysql-original.svg'],
+        ['PostgreSQL', 'postgresql/postgresql-original.svg'],
+        ['Flutter', 'flutter/flutter-original.svg'],
+        ['Dart', 'dart/dart-original.svg'],
+        ['Python', 'python/python-original.svg'],
+        ['TensorFlow', 'tensorflow/tensorflow-original.svg'],
+        ['Arduino', 'arduino/arduino-original.svg'],
+        ['Git', 'git/git-original.svg'],
+        ['GitHub', 'github/github-original.svg', true],
+        ['VS Code', 'vscode/vscode-original.svg'],
+        ['Chart.js', 'chartjs/chartjs-original.svg']
+      ];
+      const shuffle = (arr) => {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      };
+      const chipHTML = ([name, path, inv]) =>
+        `<div class="tech-chip"><img src="${DEV + path}" alt="${name}" width="28" height="28"${inv ? ' class="invert-dark"' : ''}><span>${name}</span></div>`;
+
+      document.querySelectorAll('#techMarquee .marquee-track').forEach(track => {
+        const html = shuffle(techs).map(chipHTML).join('');
+        // duplicate the set so translateX(-50% → 0) loops seamlessly
+        track.innerHTML = html + html;
+        [...track.children].slice(techs.length).forEach(el => el.setAttribute('aria-hidden', 'true'));
+      });
+
+      /* ── Project filter ── */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projects = document.querySelectorAll('.project');
+      filterBtns.forEach(btn => btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        projects.forEach(p => {
+          const show = f === 'all' || p.dataset.cat === f;
+          p.classList.toggle('hide', !show);
+          if (show) p.classList.add('in');
+        });
+      }));
     });
   </script>
 
